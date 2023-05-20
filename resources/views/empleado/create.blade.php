@@ -78,8 +78,9 @@
 
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
-                            <x-adminlte-button class="btn-flat" type="submit" label="Guardar" theme="success" icon="fas fa-lg fa-save"/>
+                        <div class="form-group col-md-6 mt-2">
+                            <x-adminlte-button class="btn-flat" type="submit" label="Guardar" theme="success"/>
+                            <a href="{{ route('empleado.index') }}" class="btn btn-danger">Cancelar</a>
                         </div>   
                     </div>
             </div>

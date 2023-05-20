@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SaunaController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\PassController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +34,13 @@ Route::get('/home', function() {
 
 Route::resource('/sauna', SaunaController::class)->names('sauna')->middleware('auth');
 Route::resource('/empleado', EmpleadoController::class)->names('empleado')->middleware('auth');
+
+
+////////////////////////////esto es practica de cambio de contraseña///////////////////////////////
+Route::get('/change-password', function() {
+    $user = Auth::user();
+        return view('change-password',compact('user'));
+})->name('change-password')->middleware('auth');
+
+
+Route::put('/usuarios/{id}/update-password', [PassController::class, 'updatePassword'])->name('usuarios.update-password')->middleware('auth');

@@ -25,7 +25,7 @@ class EmpleadoController extends Controller
             'telefono',
             'especialidad',
             ['label' => 'Actions', 'no-export' => true],
-            ['label' => 'Actions', 'no-export' => true],
+            // ['label' => 'Actions', 'no-export' => true],
 
 
         ];
@@ -70,7 +70,10 @@ class EmpleadoController extends Controller
      */
     public function show(string $id)
     {
+        $empleado = empleado::findOrFail($id);
 
+        // Pasar los datos del empleado a la vista
+        return view('empleado.show', compact('empleado'),['especialidades' => Especialidad::all()]);
     }
 
     /**
