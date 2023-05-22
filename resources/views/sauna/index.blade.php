@@ -22,13 +22,27 @@
                     <td>{{ $sauna->id}}</td>
                     <td>{{$sauna->monto}}</td>
                     <td>{{$sauna->date}}</td>
-                    <td width="15px"><a href="{{route('sauna.edit',$sauna)}}" class="btn btn-primary btn-sm">editar</a></td>
                     <td width="15px">
-                        <form action="{{route('sauna.destroy',$sauna)}}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <input type="submit" value = "eliminar" class="btn btn-danger btn-sm">
-                        </form>
+                        <div class="d-flex">
+                            {{-- boton de editar --}}
+                            <a href="{{route('sauna.edit',$sauna)}}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit" >
+                                <i class="fa fa-lg fa-fw fa-pen"></i>
+                            </a>
+                            {{-- boton de eliminar --}}
+                            <form action="{{route('sauna.destroy',$sauna)}}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                                    <i class="fa fa-lg fa-fw fa-trash"></i>
+                                </button>
+                            </form>
+                            {{-- boton de mostrar --}}
+                            <a href="{{route('sauna.show',$sauna)}}" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+                                <i class="fa fa-lg fa-fw fa-eye"></i>
+                            </a>
+
+                        </div>
+ 
                     </td>
                 </tr>
             @endforeach

@@ -19,7 +19,7 @@ class SaunaController extends Controller
         'Monto',
         'Fecha',
         ['label' => 'Actions', 'no-export' => true],    //para que esta parte no se exporte en el PDF
-        ['label' => 'Actions', 'no-export' => true],    //para que esta parte no se exporte en el PDF
+      //  ['label' => 'Actions', 'no-export' => true],    //para que esta parte no se exporte en el PDF
         
     ];
     return view('sauna.index',compact('saunas','heads'));
@@ -52,7 +52,10 @@ class SaunaController extends Controller
      */
     public function show(string $id)    //visualizar un registro a detalle
     {
-     //   return view('sauna.show');
+        $sauna = sauna::findOrFail($id);
+
+        // Pasar los datos del sauna a la vista
+        return view('sauna.show', compact('sauna'));
     }
 
     /**

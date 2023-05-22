@@ -401,11 +401,11 @@ return [
         ],
         [
             'text'       => 'Sauna',
-            'icon'       => 'fas fa-money-check-edit-alt',
+            'icon'       => 'fas fa-hot-tub',
             'submenu'    => [
                 [
                     'text' => 'Lista de pagos',
-                    'icon'       => 'fas fa-list',
+                    'icon'       => 'fas fa-credit-card',
                     'route'  => 'sauna.index'
                 ],
                 [
