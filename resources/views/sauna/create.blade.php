@@ -40,6 +40,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <x-adminlte-button class="btn-flat" type="submit" label="Guardar" theme="success" icon="fas fa-lg fa-save"/>
+                            <a href="{{ route('sauna.index') }}" class="btn btn-danger">Cancelar</a>
                         </div>
                         
                     </div>

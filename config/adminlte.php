@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => '<b>GYM</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/loginprueba.png',
+    'logo_img' => 'vendor/adminlte/dist/img/loginprueba1.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -86,7 +86,7 @@ return [
     'auth_logo' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor\adminlte\dist\img\loginprueba.png',
+            'path' => 'vendor\adminlte\dist\img\loginprueba1.png',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -401,12 +401,11 @@ return [
         ],
         [
             'text'       => 'Sauna',
-            'icon'       => 'fas fa-users',
+            'icon'       => 'fas fa-money-check-edit-alt',
             'submenu'    => [
                 [
                     'text' => 'Lista de pagos',
                     'icon'       => 'fas fa-list',
-                   
                     'route'  => 'sauna.index'
                 ],
                 [
