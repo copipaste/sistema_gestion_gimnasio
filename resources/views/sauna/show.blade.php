@@ -1,3 +1,4 @@
+
 @extends('adminlte::page')
 
 @section('content_header')
@@ -5,6 +6,7 @@
 @stop
 
 @section('content')
+
     <div class="card">
         <div class="card-body"> 
             <p><strong>monto:</strong> {{ $sauna->monto }}</p>
@@ -15,4 +17,10 @@
         <a href="{{ route('sauna.edit', $sauna) }}" class="btn btn-primary">Editar</a>
         <a href="{{ route('sauna.index') }}" class="btn btn-danger">Cancelar</a>
     </div>
-@stop
+   
+    <p>hola esto lo puede ver el admin</p>
+   
+
+@stop 
+@role('admin')
+@endrole

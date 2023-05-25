@@ -4,6 +4,9 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -19,8 +22,14 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any authentication / authorization services.
      */
+
+     //aqui creamos una pequeña funcion que devuelve verdadero o falso si el usuario tiene el rol de admin  
     public function boot(): void
     {
-        //
+        Gate::define('admin-access', function ($user) {
+           
+            return $user->hasRole('admin');
+            
+        });
     }
 }

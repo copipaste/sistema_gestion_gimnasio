@@ -328,6 +328,7 @@ return [
           //  'url'  => 'admin/settings',
           'route'  =>  'change-password',
             'icon' => 'fas fa-fw fa-lock',
+            
         ],
         // [
         //     'text'    => 'multilevel',
@@ -402,16 +403,19 @@ return [
         [
             'text'       => 'Sauna',
             'icon'       => 'fas fa-hot-tub',
+            'can'   =>  'admin-access',
             'submenu'    => [
                 [
                     'text' => 'Lista de pagos',
                     'icon'       => 'fas fa-credit-card',
-                    'route'  => 'sauna.index'
+                    'route'  => 'sauna.index',
+                    'can'   =>  'admin-access'
                 ],
                 [
-                    'text' => 'Registrar pago',
-                    'icon'       => 'fas fa-user-plus',
-                   'route'  =>  'sauna.create'
+                    'text'  => 'Registrar pago',
+                    'icon'  => 'fas fa-user-plus',
+                   'route'  =>  'sauna.create',
+                   'can'   =>  'admin-access'
                 ],
             ]
         ],

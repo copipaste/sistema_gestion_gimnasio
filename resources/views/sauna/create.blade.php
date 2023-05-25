@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
 <form method="POST" action = "{{route('sauna.store')}}">
     @csrf
             <div>
@@ -49,3 +50,4 @@
 
 
 @stop
+
