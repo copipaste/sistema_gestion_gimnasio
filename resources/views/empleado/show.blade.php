@@ -7,7 +7,11 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            
+            {{-- MATERIAL BASURA NO TOCAR NO SIRVE  --}}
+            {{-- MATERIAL BASURA NO TOCAR NO SIRVE  --}}
+            {{-- MATERIAL BASURA NO TOCAR NO SIRVE  --}}
+            {{-- MATERIAL BASURA NO TOCAR NO SIRVE  --}}
+            {{-- MATERIAL BASURA NO TOCAR NO SIRVE  --}}
             <p><strong>nombre:</strong> {{ $empleado->nombre }}</p>
             <p><strong>apellido:</strong> {{ $empleado->apellido }}</p>
             <p><strong>cedula:</strong> {{ $empleado->cedula }}</p>

@@ -129,8 +129,8 @@ return [
     |
     */
 
-    'usermenu_enabled' => true,
-    'usermenu_header' => true,
+    'usermenu_enabled' => false,
+    'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
     'usermenu_desc' => false,
@@ -153,7 +153,7 @@ return [
     'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => true,  // para que se quede fijo la parte derecha
     'layout_fixed_footer' => null,  //para que se quede fijo la parte superior
-    'layout_dark_mode' => null,
+    'layout_dark_mode' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -169,7 +169,7 @@ return [
     'classes_auth_card' => 'card-outline card-primary',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
-    'classes_auth_footer' => '',        //para quitar olvide mi crontraseña d-none 
+    'classes_auth_footer' => '',        //con esto aparece el registro y olvide mi contraseña d-none
     'classes_auth_icon' => '',
     'classes_auth_btn' => 'btn-flat btn-primary',
 
@@ -324,6 +324,11 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'registrar usuario',
+            'route'  => 'cliente.create',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text' => 'change_password',
           //  'url'  => 'admin/settings',
           'route'  =>  'change-password',
@@ -385,6 +390,13 @@ return [
         //     'url'        => '#',
         // ],
         [
+            'text' => 'Clientes',
+          //  'url'  => 'admin/settings',
+          'route'  =>  'cliente.index',
+            'icon' => 'fas fa-users',
+            
+        ],
+        [
             'text'       => 'Empleados',
             'icon'       => 'fas fa-users',
             'submenu'    => [
@@ -400,6 +412,7 @@ return [
                 ],
             ]
         ],
+
         [
             'text'       => 'Sauna',
             'icon'       => 'fas fa-hot-tub',

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SaunaController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PassController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,7 @@ Route::get('/home', function() {
 //agregamos un middleware para que solo los usuarios con rol de admin puedan acceder a la ruta de editar,eliminar,crear etc de sauna con "->middleware('can:admin-access');"
 Route::resource('/sauna', SaunaController::class)->names('sauna')->middleware('auth')->middleware('can:admin-access');
 Route::resource('/empleado', EmpleadoController::class)->names('empleado')->middleware('auth');
-
+Route::resource('/cliente', ClienteController::class)->names('cliente')->middleware('auth');
 
 ////////////////////////////esto es practica de cambio de contraseña///////////////////////////////
 Route::get('/change-password', function() {

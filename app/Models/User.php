@@ -23,9 +23,24 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nro_carnet',
+        'nombre',
+        'apellido',
+        'fecha_nacimiento',
+        'telefono_principal',
+        'telefono_emergencia',
         'email',
+        'sexo',
+        'tipo_sangre',
+        'peso',
+        'direccion',
         'password',
+        'id_tarjeta',
+        'id_rol',
+        'id_periodo',
+        'id_membresia',
+        'descripcion',
+
     ];
 
     /**
@@ -47,4 +62,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //esto es el cambio que hice 
+    public function membresia()
+    {
+        return $this->belongsTo(Membresia::class, 'idMembresia');
+    }
+    
+    //esto es el cambio que hice 
+
 }

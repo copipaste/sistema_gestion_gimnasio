@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Empleado;
 use App\Models\Especialidad;
+use Illuminate\Support\Facades\DB;
 
 class EmpleadoController extends Controller
 {
@@ -30,6 +31,8 @@ class EmpleadoController extends Controller
 
         ];
         return view('empleado.index',compact('empleados','especialidades','heads'));
+
+        //tengo que terminar el index
     }
 
     /**
@@ -60,7 +63,7 @@ class EmpleadoController extends Controller
       
       
          $empleado = Empleado::create($request->all());
-       
+         
      
         return redirect()->route('empleado.index', $empleado); 
     }

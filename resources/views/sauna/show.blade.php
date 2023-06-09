@@ -18,8 +18,7 @@
         <a href="{{ route('sauna.index') }}" class="btn btn-danger">Cancelar</a>
     </div>
    
-    <p>hola esto lo puede ver el admin</p>
-   
+
 
 @stop 
 @role('admin')

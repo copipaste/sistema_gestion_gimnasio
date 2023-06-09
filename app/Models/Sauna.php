@@ -9,7 +9,7 @@ class Sauna extends Model
 {
     use HasFactory;
 
-    use HasFactory;
+
     protected $fillable = [
         'monto',
         'date',
