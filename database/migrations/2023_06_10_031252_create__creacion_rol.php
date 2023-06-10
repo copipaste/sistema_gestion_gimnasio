@@ -3,9 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 return new class extends Migration
 {
@@ -14,12 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        $role1 = Role::create(['name' => 'admin']);
-        $role2 = Role::create(['name' => 'cliente']);      
-        $role3 = Role::create(['name' => 'entrenador']);
-        $user = User::find(1);
-        $user->assignRole($role1);
+            Role::create(['name' => 'admin']);
+            Role::create(['name' => 'cliente']);      
+            Role::create(['name' => 'entrenador']);
     }
 
     /**
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('_creacion_rol');
     }
 };
