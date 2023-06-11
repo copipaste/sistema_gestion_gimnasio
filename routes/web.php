@@ -5,6 +5,9 @@ use App\Http\Controllers\SaunaController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PassController;
+use App\Http\Controllers\DisciplinaController;
+use App\Http\Controllers\Horario_disciplinaController;
+USE App\Http\Controllers\MembresiaController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,7 +39,9 @@ Route::get('/home', function() {
 Route::resource('/sauna', SaunaController::class)->names('sauna')->middleware('auth')->middleware('can:admin-access');
 Route::resource('/empleado', EmpleadoController::class)->names('empleado')->middleware('auth');
 Route::resource('/cliente', ClienteController::class)->names('cliente')->middleware('auth');
-
+Route::resource('/disciplina', DisciplinaController::class)->names('disciplina')->middleware('auth');
+Route::resource('/horario_disciplina',Horario_disciplinaController::class)->names('horario_disciplina')->middleware('auth');
+Route::resource('/membresia',MembresiaController::class)->names('membresia')->middleware('auth');
 ////////////////////////////esto es practica de cambio de contraseña///////////////////////////////
 Route::get('/change-password', function() {
     $user = Auth::user();

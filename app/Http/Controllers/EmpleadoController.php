@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Empleado;
 use App\Models\Especialidad;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class EmpleadoController extends Controller
@@ -14,12 +15,18 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::all();
+        
+
+
+        $empleados = User::whereHas('roles', function ($query) {
+            $query->where('name', 'entrenador');
+        })->get();
+
         $especialidades = Especialidad::all(); // Suponiendo que tienes un modelo "Especialidad" asociado a la tabla de especialidades
 
         //asignar la cabecera de nuestro datatable
         $heads = [
-            'id',
+            'nro_carnet',
             'nombre',
             'apellido',
             'cedula',

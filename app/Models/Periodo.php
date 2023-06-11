@@ -12,5 +12,5 @@ class Periodo extends Model
 
 
     public $timestamps = false;
-    protected $table = 'periodo';
+    // protected $table = 'periodo'; esto de aca se ocupa para especificar que tablas va a utilizar 
 }

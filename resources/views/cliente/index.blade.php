@@ -47,8 +47,8 @@
                         <div class="d-flex">  {{-- esto es lo que hace que los datos esten uno al lado del otro --}}
                            
                            {{-- boton de editar --}}
-                            <a href="{{route('cliente.edit',$cliente)}}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit" ><i class="fa fa-lg fa-fw fa-pen"></i></a>  
-                           
+                            <a  class="btn btn-xs btn-default text-info mx-1 shadow" title="actualizar_membresia" ><i class="fas fa-lg fa-fw fa-calendar-day"></i></a>  
+                            <a href="{{route('cliente.edit',$cliente)}}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit" ><i class="fa fa-lg fa-fw fa-pen"></i></a> 
                            
                             {{-- boton de eliminar  --}}
                                <button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete" data-toggle="modal" data-target="#modalCustom">

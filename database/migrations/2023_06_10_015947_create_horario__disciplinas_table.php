@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('horario_disciplinas', function (Blueprint $table) {
-            $table->UnsignedBigInteger('id');
+            $table->UnsignedBigInteger('id');  //este tiene que ser autoincrementable   
             $table->UnsignedBigInteger('id_disciplina');
             $table->primary(['id_disciplina', 'id']);
             $table->foreign('id_disciplina')->references('id')->on('disciplinas')->onUpdate('CASCADE')->onDelete('CASCADE');

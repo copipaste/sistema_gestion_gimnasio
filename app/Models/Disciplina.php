@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Disciplina extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'id';
+
+    public function membresias()
+    {
+        return $this->belongsToMany(Membresia::class, 'englobas', 'Id_disciplina', 'Id_membresia');
+    }
 }

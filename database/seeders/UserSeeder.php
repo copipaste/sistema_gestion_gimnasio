@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'fecha_nacimiento' => Carbon::parse('1990-01-01'),
             'telefono_principal' => 123456789,
             'telefono_emergencia' => null,
-            'email' => 'jhoel@example.com',
+            'email' => 'jhoel@gmail.com',
             'sexo' => 'Masculino',
             'tipo_sangre' => null,
             'peso' => null,

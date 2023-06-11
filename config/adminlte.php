@@ -412,6 +412,46 @@ return [
                 ],
             ]
         ],
+        [
+            'text'       => 'Disciplinas',
+            'icon'       => 'fas fa-users',
+            'submenu'    => [
+                [
+                    'text' => 'Lista de Disciplinas',
+                    'icon'       => 'fas fa-list',
+                    'route'  => 'disciplina.index'
+                ],
+                [
+                    'text' => 'Registrar Disciplina',
+                    'icon'       => 'fas fa-user-plus',
+                    // 'route'  =>  'disciplina.create'
+                ],
+            ]
+        ],
+        [
+            'text'       => 'Horarios Disciplina',
+            'icon'       => 'fas fa-users',
+            'submenu'    => [
+                [
+                    'text' => 'Lista de Horarios',
+                    'icon'       => 'fas fa-list',
+                    'route'  => 'horario_disciplina.index'
+                ],
+
+            ]
+        ],
+        [
+            'text'       => 'Membresias',
+            'icon'       => 'fas fa-users',
+            'submenu'    => [
+                [
+                    'text' => 'Lista de membresias',
+                    'icon'       => 'fas fa-list',
+                    'route'  => 'membresia.index'
+                ],
+
+            ]
+        ],
 
         [
             'text'       => 'Sauna',

@@ -27,4 +27,5 @@
         <a href="{{ route('sauna.edit', $empleado) }}" class="btn btn-primary">Editar</a>
         <a href="{{ route('empleado.index') }}" class="btn btn-danger">Cancelar</a>
     </div>
+
 @stop

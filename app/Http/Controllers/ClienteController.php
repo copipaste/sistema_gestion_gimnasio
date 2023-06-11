@@ -72,8 +72,7 @@ class ClienteController extends Controller
             'password' => 'required',
             'id_tarjeta' => 'required',
             'id_rol'    => 'required',
-            'id_periodo' => 'required',
-            'id_membresia' => 'required',
+
             'descripcion' => 'required',
 
 

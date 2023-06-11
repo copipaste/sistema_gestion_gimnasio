@@ -68,7 +68,7 @@
             </div>
             <div class="form-group">
                 <label for="id_tarjeta">ID de Tarjeta</label>
-                <input type="text" name="id_tarjeta" id="id_tarjeta" class="form-control" required>
+                <input type="text" name="id_tarjeta" id="id_tarjeta" class="form-control" >
             </div>
             <div class="form-group">
                 <label for="id_rol">ID rol</label>
@@ -81,7 +81,7 @@
 
             <div class="form-group">
                 <label for="id_periodo">id periodo</label>
-                <select name="id_periodo" id="id_periodo" class="form-control" required>
+                <select name="id_periodo" id="id_periodo" class="form-control" >
                     @foreach ($periodos as $periodo)
                     <option value = "{{$periodo->id}}">{{ $periodo->id}}</option>
                     @endforeach
@@ -90,7 +90,7 @@
             
             <div class="form-group">
                 <label for="id_membresia">id membresia</label>
-                <select name="id_membresia" id="id_membresia" class="form-control" required>
+                <select name="id_membresia" id="id_membresia" class="form-control" >
                     @foreach ($membresias as $membresia)
                     <option value = "{{$membresia->id}}">{{ $membresia->nombre}}</option>
                     @endforeach
