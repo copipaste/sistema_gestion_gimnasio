@@ -169,7 +169,7 @@ return [
     'classes_auth_card' => 'card-outline card-primary',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
-    'classes_auth_footer' => '',        //con esto aparece el registro y olvide mi contraseña d-none
+    'classes_auth_footer' => 'd-none',        //con esto aparece el registro y olvide mi contraseña d-none
     'classes_auth_icon' => '',
     'classes_auth_btn' => 'btn-flat btn-primary',
 
@@ -326,7 +326,7 @@ return [
         [
             'text' => 'registrar usuario',
             'route'  => 'cliente.create',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-user-plus',
         ],
         [
             'text' => 'change_password',
@@ -405,16 +405,12 @@ return [
                     'icon'       => 'fas fa-list',
                     'route'  => 'empleado.index'
                 ],
-                [
-                    'text' => 'Registrar Empleado',
-                    'icon'       => 'fas fa-user-plus',
-                    'route'  =>  'empleado.create'
-                ],
+
             ]
         ],
         [
             'text'       => 'Disciplinas',
-            'icon'       => 'fas fa-users',
+            'icon'       => 'fas fa-dumbbell',
             'submenu'    => [
                 [
                     'text' => 'Lista de Disciplinas',
@@ -430,48 +426,58 @@ return [
         ],
         [
             'text'       => 'Horarios Disciplina',
-            'icon'       => 'fas fa-users',
+            'icon'       => 'fas fa-clock',
             'submenu'    => [
                 [
                     'text' => 'Lista de Horarios',
                     'icon'       => 'fas fa-list',
                     'route'  => 'horario_disciplina.index'
                 ],
+                [
+                    'text' => 'crear horario',
+                    'icon'       => 'fas fa-list',
+                    'route'  => 'horario_disciplina.create'
+                ],
 
             ]
         ],
         [
             'text'       => 'Membresias',
-            'icon'       => 'fas fa-users',
+            'icon'       => 'fas fa-id-card-alt',
             'submenu'    => [
                 [
                     'text' => 'Lista de membresias',
                     'icon'       => 'fas fa-list',
                     'route'  => 'membresia.index'
                 ],
+                [
+                    'text' => 'Crear membresia',
+                    'icon'       => 'fas fa-list',
+                    'route'  => 'membresia.create'
+                ],
 
             ]
         ],
 
-        [
-            'text'       => 'Sauna',
-            'icon'       => 'fas fa-hot-tub',
-            'can'   =>  'admin-access',
-            'submenu'    => [
-                [
-                    'text' => 'Lista de pagos',
-                    'icon'       => 'fas fa-credit-card',
-                    'route'  => 'sauna.index',
-                    'can'   =>  'admin-access'
-                ],
-                [
-                    'text'  => 'Registrar pago',
-                    'icon'  => 'fas fa-user-plus',
-                   'route'  =>  'sauna.create',
-                   'can'   =>  'admin-access'
-                ],
-            ]
-        ],
+        // [
+        //     'text'       => 'Sauna',
+        //     'icon'       => 'fas fa-hot-tub',
+        //     //'can'   =>  'admin-access',
+        //     'submenu'    => [
+        //         [
+        //             'text' => 'Lista de pagos',
+        //             'icon'       => 'fas fa-credit-card',
+        //             'route'  => 'sauna.index',
+        //         //    'can'   =>  'admin-access'
+        //         ],
+        //         [
+        //             'text'  => 'Registrar pago',
+        //             'icon'  => 'fas fa-user-plus',
+        //            'route'  =>  'sauna.create',
+        //        //    'can'   =>  'admin-access'
+        //         ],
+        //     ]
+        // ],
     ],
 
     /*

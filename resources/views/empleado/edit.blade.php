@@ -38,14 +38,7 @@
         <div class="row" >
             <x-adminlte-input name="email" label="email" type="email" placeholder="email" label-class="text-lightblue" fgroup-class="col-md-6" value="{{$empleado->email}}"/>
         </div>
-        <div class="row" >
 
-           <x-adminlte-select2 name="especialidad_id" label="especialidad" type="number" label-class="text-lightblue" fgroup-class="col-md-6" value="{{$empleado->number}}">
-                @foreach ($especialidades as $especialidad)
-                <option value = "{{$especialidad->id}}">{{ $especialidad->nombre}}</option>
-                @endforeach
-            </x-adminlte-select2> 
-        </div>
         <div class="row">
             @php
             $config = ['format' => 'YYYY-MM-DD'];

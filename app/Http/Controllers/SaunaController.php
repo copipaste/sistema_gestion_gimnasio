@@ -85,6 +85,7 @@ class SaunaController extends Controller
      */
     public function destroy(string $id)   //para eliminar un registro de la bd  
     {
+       
         $sauna = Sauna::find($id);
         $sauna->delete();
         return redirect()->route('sauna.index', $sauna)->with('mensaje','registro eliminado correctamente');        //estoy invocando la ruta sauna.index

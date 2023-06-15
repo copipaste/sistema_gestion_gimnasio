@@ -22,22 +22,24 @@ class EmpleadoController extends Controller
             $query->where('name', 'entrenador');
         })->get();
 
-        $especialidades = Especialidad::all(); // Suponiendo que tienes un modelo "Especialidad" asociado a la tabla de especialidades
+       // $especialidades = Especialidad::all(); // Suponiendo que tienes un modelo "Especialidad" asociado a la tabla de especialidades
 
         //asignar la cabecera de nuestro datatable
         $heads = [
             'nro_carnet',
             'nombre',
             'apellido',
-            'cedula',
             'telefono',
-            'especialidad',
+            'direccion',
+        //   'especialidad',
             ['label' => 'Actions', 'no-export' => true],
             // ['label' => 'Actions', 'no-export' => true],
 
 
+   
+
         ];
-        return view('empleado.index',compact('empleados','especialidades','heads'));
+        return view('empleado.index',compact('empleados','heads'));
 
         //tengo que terminar el index
     }
@@ -47,7 +49,7 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        return view('empleado.create',['especialidades' => Especialidad::all()]);
+        return view('empleado.create');
     }
 
     /**
@@ -83,7 +85,7 @@ class EmpleadoController extends Controller
         $empleado = empleado::findOrFail($id);
 
         // Pasar los datos del empleado a la vista
-        return view('empleado.show', compact('empleado'),['especialidades' => Especialidad::all()]);
+        return view('empleado.show', compact('empleado'));
     }
 
     /**
@@ -91,9 +93,9 @@ class EmpleadoController extends Controller
      */
     public function edit(string $id)
     {
-        $empleado = Empleado::find($id);
+        $empleado = User::find($id);
      //   return view('empleado.edit',compact('empleado'));
-        return view('empleado.edit',compact('empleado'),['especialidades' => Especialidad::all()]);
+        return view('empleado.edit',compact('empleado'));
     }
 
     /**

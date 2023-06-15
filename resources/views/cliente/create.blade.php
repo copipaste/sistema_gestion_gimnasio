@@ -1,13 +1,10 @@
 @extends('adminlte::page')
 
-
-
 @section('content_header')
-    <h1 class="m-0 text-dark">registrar Usuario</h1>
+    <h1 class="m-0 text-dark">Registrar Usuario</h1>
 @stop
 
 @section('content')
-
 <div class="row">
     <div class="col-md-6">
         <form method="POST" action="{{ route('cliente.store') }}" >
@@ -48,10 +45,16 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="tipo_sangre">tipo de sangre</label>
+                <label for="tipo_sangre">Tipo de sangre</label>
                 <select name="tipo_sangre" id="tipo_sangre" class="form-control" required>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="">No sabe</option>
                 </select>
             </div>
             <div class="form-group">
@@ -74,39 +77,36 @@
                 <label for="id_rol">ID rol</label>
                 <select name="id_rol" id="id_rol" class="form-control" required>
                     @foreach ($roles as $role)
-                    <option value = "{{$role->id}}">{{ $role->name}}</option>
+                    <option value="{{$role->id}}">{{$role->name}}</option>
                     @endforeach
                 </select>
             </div>
-
             <div class="form-group">
-                <label for="id_periodo">id periodo</label>
-                <select name="id_periodo" id="id_periodo" class="form-control" >
+                <label for="id_periodo">ID periodo</label>
+                <select name="id_periodo" id="id_periodo" class="form-control">
                     @foreach ($periodos as $periodo)
-                    <option value = "{{$periodo->id}}">{{ $periodo->id}}</option>
+                    <option value="{{$periodo->id}}">{{$periodo->id}}</option>
                     @endforeach
                 </select>
             </div>
-            
             <div class="form-group">
-                <label for="id_membresia">id membresia</label>
-                <select name="id_membresia" id="id_membresia" class="form-control" >
+                <label for="id_membresia">ID membresia</label>
+                <select name="id_membresia" id="id_membresia" class="form-control">
                     @foreach ($membresias as $membresia)
-                    <option value = "{{$membresia->id}}">{{ $membresia->nombre}}</option>
+                    <option value="{{$membresia->id}}">{{$membresia->nombre}}</option>
                     @endforeach
+                    <option value="">NO NECESITA MEMBRESIA</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="descripcion">Descripcion</label>
+                <label for="descripcion">Descripción</label>
                 <input type="text" name="descripcion" id="descripcion" class="form-control" required>
             </div>
-            <div class="row" >
-        
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Crear Cliente</button>
             </div>
         </form>
     </div>
 </div>
-
 @stop
+

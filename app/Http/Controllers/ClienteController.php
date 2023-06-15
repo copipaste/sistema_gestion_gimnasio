@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use App\Models\Membresia;
 use App\Models\Periodo;
+use App\Models\Disciplina;
 class ClienteController extends Controller
 {
     /**
@@ -113,7 +114,14 @@ class ClienteController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cliente = User::findOrFail($id);
+        $roles = Role::all();
+        $membresias = Membresia::all();
+        $periodos = Periodo::all();
+
+
+        // Pasar los datos del sauna a la vista
+        return view('cliente.show', compact('cliente','roles','membresias','periodos'));
     }
 
     /**
@@ -121,7 +129,11 @@ class ClienteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cliente = User::find($id);
+        $membresias = Membresia::all();
+        $periodos = Periodo::all();
+        $disciplinas = Disciplina::all();
+        return view('cliente.edit',compact('cliente','membresias','periodos'));
     }
 
     /**
@@ -129,14 +141,51 @@ class ClienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        request()->validate([
+            
+            'nro_carnet' => 'required',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'fecha_nacimiento' => 'required',
+            'telefono_principal' => 'required',
+            'telefono_emergencia' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'sexo' => 'required',
+            'tipo_sangre' => 'required',
+            'peso' => 'required',
+            'direccion' => 'required',
+            'password' => 'required',
+            'id_tarjeta' => 'required',
+            'descripcion' => 'required',
+        ]);
+
+        $cliente = User::find($id);
+        $cliente->nro_carnet = $request->nro_carnet;
+        $cliente->nombre = $request->nombre;
+        $cliente->apellido = $request->apellido;
+        $cliente->fecha_nacimiento = $request->fecha_nacimiento;
+        $cliente->telefono_principal = $request->telefono_principal;
+        $cliente->telefono_emergencia = $request->telefono_emergencia;
+        $cliente->email = $request->email;
+        $cliente->sexo = $request->sexo;
+        $cliente->tipo_sangre = $request->tipo_sangre;
+        $cliente->peso = $request->peso;
+        $cliente->direccion = $request->direccion;
+        $cliente->password = Hash::make($request->password);
+        $cliente->id_tarjeta = $request->id_tarjeta;
+        $cliente->descripcion = $request->descripcion;
+
+        $cliente->update();
+        return redirect()->route('cliente.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
+    {        
+        $cliente = User::find($id);
+        $cliente->delete();
+        return redirect()->route('cliente.index', $cliente);
     }
 }

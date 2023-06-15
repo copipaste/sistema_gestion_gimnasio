@@ -36,7 +36,7 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');                                                 
 //agregamos un middleware para que solo los usuarios con rol de admin puedan acceder a la ruta de editar,eliminar,crear etc de sauna con "->middleware('can:admin-access');"
-Route::resource('/sauna', SaunaController::class)->names('sauna')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/sauna', SaunaController::class)->names('sauna')->middleware('auth');  //->middleware('can:admin-access');
 Route::resource('/empleado', EmpleadoController::class)->names('empleado')->middleware('auth');
 Route::resource('/cliente', ClienteController::class)->names('cliente')->middleware('auth');
 Route::resource('/disciplina', DisciplinaController::class)->names('disciplina')->middleware('auth');
@@ -50,3 +50,7 @@ Route::get('/change-password', function() {
 
 
 Route::put('/usuarios/{id}/update-password', [PassController::class, 'updatePassword'])->name('usuarios.update-password')->middleware('auth');
+
+
+
+Route::get('/entramosaqui', [PassController::class, 'elmetodo'])->name('home')->middleware('auth');

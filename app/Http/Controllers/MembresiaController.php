@@ -39,7 +39,8 @@ class MembresiaController extends Controller
      */
     public function create()
     {
-        //
+        $disciplinas = Disciplina::all();  
+        return view('membresia.create',compact('disciplinas'));
     }
 
     /**
@@ -47,7 +48,25 @@ class MembresiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            
+            'nombre' => 'required',
+            'duracion' => 'required',
+            
+            'descripcion' => 'required',
+            'precio' => 'required',
+
+        ]); //validacion de los campos osea que tienen que tener algun valor 
+        $membresia = Membresia::create($request->all());
+       
+        
+       $selectedDisciplinas = $request->input('sel2Category');
+      
+        $membresia->disciplinas()->attach($selectedDisciplinas);
+    
+
+        
+       return redirect()->route('membresia.index', $membresia);
     }
 
     /**
@@ -77,7 +96,7 @@ class MembresiaController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, String $id) //el puto id me jodio por 3 horas raro rarete
-    {
+    {                                       
         request()->validate([
             
             'nombre' => 'required',
@@ -101,11 +120,11 @@ class MembresiaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(String $id)
     {
+
         $membresia = Membresia::findOrFail($id);
-        
         $membresia->delete();
-        return redirect()->route('empleado.index', $membresia->id)->with('mensaje','registro eliminado correctamente'); 
+        return redirect()->route('membresia.index', $membresia); 
     }
 }

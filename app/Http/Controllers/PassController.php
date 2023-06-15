@@ -25,6 +25,9 @@ class PassController extends Controller
     
         return redirect()->route('empleado.index')->with('success', 'Contraseña actualizada correctamente.');
     }
-
+    public function elmetodo()
+    {
+        return view('lavista');
+    }
     
 }

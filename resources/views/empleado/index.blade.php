@@ -21,12 +21,12 @@
         <x-adminlte-datatable id="table1" :heads="$heads" striped head-theme="dark" with-buttons>
             @foreach($empleados as $empleado)
                 <tr>
-                    <td>{{ $empleado->id}}</td>
+                    <td>{{ $empleado->nro_carnet}}</td>
                     <td>{{$empleado->nombre}}</td>
                     <td>{{$empleado->apellido}}</td>
-                    <td>{{ $empleado->cedula}}</td>
-                    <td>{{$empleado->telefono}}</td>
-                    <td>{{$especialidades->where('id', $empleado->especialidad_id)->first()->nombre}}</td>
+                    <td>{{ $empleado->telefono_principal}}</td>
+                    <td>{{$empleado->direccion}}</td>
+                  
                    
                     {{-- <a href="{{route('empleado.edit',$empleado)}}" class="btn btn-primary btn-sm">editar</a>  
                     //este es codigo de un boton normalito--}}
