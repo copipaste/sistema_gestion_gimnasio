@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('periodos', function (Blueprint $table) {
             $table->id();
-            $table->date('desde');
-            $table->date('hasta');
+            $table->date('desde')->nullable();
+            $table->date('hasta')->nullable();
             $table->timestamps();
         });
     }

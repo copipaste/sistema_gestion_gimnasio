@@ -72,7 +72,7 @@ class ClienteController extends Controller
             'sexo' => 'required',
             'tipo_sangre' => 'required',
             'peso' => 'required',
-            'desde' => 'required',
+            // 'desde' => 'required',
             'password' => 'required',
             'id_tarjeta' => 'required',
             'id_rol'    => 'required',
@@ -80,34 +80,63 @@ class ClienteController extends Controller
         ]); //validacion de los campos osea que tienen que tener algun valor 
         
         //creamos la variable fecha_ini para poder sumarle la cantidad de dias que dura la membresia
-        $fecha_ini = Carbon::parse($request->desde);
-        $membresia = Membresia::find($request->id_membresia);
-        $fecha_fin = $fecha_ini->addDays($membresia->duracion);
-        $periodo = Periodo::create([
-            'desde' => $request->desde,
-            'hasta' => $fecha_fin,
-        ]);
-    
 
-        User::create([
-            'nro_carnet' => $request->nro_carnet,
-            'nombre' => $request->nombre,
-            'apellido' => $request->apellido,
-            'fecha_nacimiento' => $request->fecha_nacimiento,
-            'telefono_principal' => $request->telefono_principal,
-            'telefono_emergencia' => $request->telefono_emergencia,
-            'email' => $request->email,
-            'sexo' => $request->sexo,
-            'tipo_sangre' => $request->tipo_sangre,
-            'peso' => $request->peso,
-            'direccion' => $request->direccion,
-            'password' => Hash::make($request->password),
-            'id_tarjeta' => $request->id_tarjeta,
-            'id_rol'    => $request->id_rol,
-            'id_periodo' => $periodo->id,
-            'id_membresia' => $request->id_membresia,
-            'descripcion' => $request->descripcion,
-        ]);
+    
+        if ($request->id_rol == 2) {
+
+
+            // $fecha_ini = Carbon::parse($request->desde);
+            // $membresia = Membresia::find($request->id_membresia);
+            // $fecha_fin = $fecha_ini->addDays($membresia->duracion);
+            $periodo = Periodo::create([
+                // 'desde' => $request->desde,
+                // 'hasta' => $fecha_fin,
+                 'desde' => null,
+                 'hasta' => null,
+            ]);
+
+            $user = User::create([
+                'nro_carnet' => $request->nro_carnet,
+                'nombre' => $request->nombre,
+                'apellido' => $request->apellido,
+                'fecha_nacimiento' => $request->fecha_nacimiento,
+                'telefono_principal' => $request->telefono_principal,
+                'telefono_emergencia' => $request->telefono_emergencia,
+                'email' => $request->email,
+                'sexo' => $request->sexo,
+                'tipo_sangre' => $request->tipo_sangre,
+                'peso' => $request->peso,
+                'direccion' => $request->direccion,
+                'password' => Hash::make($request->password),
+                'id_tarjeta' => $request->id_tarjeta,
+                'id_rol'    => $request->id_rol,
+                'id_periodo' => $periodo->id,
+                'id_membresia' => $request->id_membresia,
+                'descripcion' => $request->descripcion,
+            ]);
+        }else{
+        
+            User::create([
+                'nro_carnet' => $request->nro_carnet,
+                'nombre' => $request->nombre,
+                'apellido' => $request->apellido,
+                'fecha_nacimiento' => $request->fecha_nacimiento,
+                'telefono_principal' => $request->telefono_principal,
+                'telefono_emergencia' => $request->telefono_emergencia,
+                'email' => $request->email,
+                'sexo' => $request->sexo,
+                'tipo_sangre' => $request->tipo_sangre,
+                'peso' => $request->peso,
+                'direccion' => $request->direccion,
+                'password' => Hash::make($request->password),
+                'id_tarjeta' => $request->id_tarjeta,
+                'id_rol'    => $request->id_rol,
+                'id_membresia' => $request->id_membresia,
+                'descripcion' => $request->descripcion,
+            ]);
+        }
+
+
 
         
         $user = User::where('email', $request->email)->first(); 

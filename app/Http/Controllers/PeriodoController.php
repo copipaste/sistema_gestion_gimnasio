@@ -50,7 +50,7 @@ class PeriodoController extends Controller
     // Redirigir o devolver una respuesta según corresponda
     
     
-         return redirect()->route('cliente.index')->with('success', 'Periodo actualizado correctamente.');
+         return redirect()->route('cliente.index')->with('success', 'Membresia actualizada correctamente.');
     }
 
 

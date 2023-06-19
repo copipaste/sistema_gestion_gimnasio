@@ -30,12 +30,20 @@
                     <td>
                         @php
                             $fechaActual = date('Y-m-d');
-                            $claseBoton = $periodos->where('id', $cliente->id_periodo)->first()->hasta < $fechaActual ? 'btn-danger' : 'btn-success';
-                            $texto = $periodos->where('id', $cliente->id_periodo)->first()->hasta < $fechaActual ? 'Vencido' : 'Vigente';
+                            // $claseBoton = $periodos->where('id', $cliente->id_periodo)->first()->hasta < $fechaActual ? 'btn-danger' : 'btn-success';
+                            $claseBoton = $periodos->where('id', $cliente->id_periodo)->first()->hasta === null ? 'btn-warning' : ($periodos->where('id', $cliente->id_periodo)->first()->hasta > $fechaActual ? 'btn-success' : ($periodos->where('id', $cliente->id_periodo)->first()->hasta < $fechaActual ? 'btn-danger': 'btn-success'));
+
+
+                            $texto = $periodos->where('id', $cliente->id_periodo)->first()->hasta == null ? 'Reciente' : ($periodos->where('id', $cliente->id_periodo)->first()->hasta > $fechaActual ? 'Vigente' : ($periodos->where('id', $cliente->id_periodo)->first()->hasta < $fechaActual ? 'Vencido': 'btn-success'));
                         @endphp
                         <button class="btn {{ $claseBoton }} btn-rounded">{{ $texto }}</button>
                     </td>
+                    {{-- <td>{{ $membresias->where('id', $cliente->id_membresia)->first()->nombre }}</td> --}}
+                    @if ($cliente->id_membresia != null)
                     <td>{{ $membresias->where('id', $cliente->id_membresia)->first()->nombre }}</td>
+                    @else
+                    <td></td>
+                    @endif
                     <td width="15px">
                         <div class="d-flex">
 

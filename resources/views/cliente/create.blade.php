@@ -82,7 +82,7 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="id_membresia" >ID membresia</label>
                 <select name="id_membresia" id="id_membresia" class="form-control" >
                     @foreach ($membresias as $membresia)
@@ -90,11 +90,11 @@
                     @endforeach
                     <option value="">Sin membresia</option>
                 </select>
-            </div>
-            <div class="form-group">
+            </div> --}}
+            {{-- <div class="form-group">
                 <x-adminlte-input name="desde" label="fecha de inicio de la membresia" type="date" placeholder="Fecha de nacimiento">
                 </x-adminlte-input>
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
                 <input type="text" name="descripcion" id="descripcion" class="form-control">
