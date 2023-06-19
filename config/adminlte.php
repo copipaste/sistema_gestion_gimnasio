@@ -420,7 +420,7 @@ return [
                 [
                     'text' => 'Registrar Disciplina',
                     'icon'       => 'fas fa-user-plus',
-                    // 'route'  =>  'disciplina.create'
+                    'route'  =>  'disciplina.create'
                 ],
             ]
         ],

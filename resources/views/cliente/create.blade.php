@@ -9,7 +9,7 @@
     <div class="col-md-6">
         <form method="POST" action="{{ route('cliente.store') }}" >
             @csrf
-            <div class="form-group">
+            <div class="form-group" >
                 <label for="nro_carnet">nro_carnet</label>
                 <input type="number" name="nro_carnet" id="nro_carnet" class="form-control" required>
             </div>
@@ -63,7 +63,7 @@
             </div>
             <div class="form-group">
                 <label for="direccion">Dirección</label>
-                <input type="text" name="direccion" id="direccion" class="form-control" required>
+                <input type="text" name="direccion" id="direccion" class="form-control" >
             </div>
             <div class="form-group">
                 <label for="password">Contraseña</label>
@@ -81,26 +81,23 @@
                     @endforeach
                 </select>
             </div>
+
             <div class="form-group">
-                <label for="id_periodo">ID periodo</label>
-                <select name="id_periodo" id="id_periodo" class="form-control">
-                    @foreach ($periodos as $periodo)
-                    <option value="{{$periodo->id}}">{{$periodo->id}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="id_membresia">ID membresia</label>
-                <select name="id_membresia" id="id_membresia" class="form-control">
+                <label for="id_membresia" >ID membresia</label>
+                <select name="id_membresia" id="id_membresia" class="form-control" >
                     @foreach ($membresias as $membresia)
                     <option value="{{$membresia->id}}">{{$membresia->nombre}}</option>
                     @endforeach
-                    <option value="">NO NECESITA MEMBRESIA</option>
+                    <option value="">Sin membresia</option>
                 </select>
             </div>
             <div class="form-group">
+                <x-adminlte-input name="desde" label="fecha de inicio de la membresia" type="date" placeholder="Fecha de nacimiento">
+                </x-adminlte-input>
+            </div>
+            <div class="form-group">
                 <label for="descripcion">Descripción</label>
-                <input type="text" name="descripcion" id="descripcion" class="form-control" required>
+                <input type="text" name="descripcion" id="descripcion" class="form-control">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Crear Cliente</button>

@@ -9,6 +9,7 @@ use App\Http\Controllers\DisciplinaController;
 use App\Http\Controllers\Horario_disciplinaController;
 USE App\Http\Controllers\MembresiaController;
 use App\Models\User;
+use App\Http\Controllers\PeriodoController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -51,6 +52,6 @@ Route::get('/change-password', function() {
 
 Route::put('/usuarios/{id}/update-password', [PassController::class, 'updatePassword'])->name('usuarios.update-password')->middleware('auth');
 
+Route::put('/periodo/{id}', [PeriodoController::class, 'update'])->name('periodo.update')->middleware('auth');
 
 
-Route::get('/entramosaqui', [PassController::class, 'elmetodo'])->name('home')->middleware('auth');

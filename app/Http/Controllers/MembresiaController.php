@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Membresia;
 use App\Models\Disciplina;
-
+use App\Models\Horario_Disciplina;
 class MembresiaController extends Controller
 {
     /**
@@ -74,7 +74,16 @@ class MembresiaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //esto esta bien    
+        $membresia = Membresia::findOrFail($id);
+        
+        // $disciplinas = $membresia->disciplinas; ESTO SIRVE PARA MOSTRAR LAS DISCIPLINAS QUE TIENE UNA MEMBRESIA
+        $disciplinas = $membresia->disciplinas;
+        $horario_disciplinas = Horario_Disciplina::all();
+
+        
+        //   return view('empleado.edit',compact('empleado'));
+           return view('membresia.show',compact('membresia','disciplinas','horario_disciplinas'));
     }
 
     /**
@@ -122,7 +131,7 @@ class MembresiaController extends Controller
      */
     public function destroy(String $id)
     {
-
+        
         $membresia = Membresia::findOrFail($id);
         $membresia->delete();
         return redirect()->route('membresia.index', $membresia); 

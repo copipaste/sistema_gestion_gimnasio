@@ -34,7 +34,9 @@ class DisciplinaController extends Controller
      */
     public function create()
     {
+
         return view('disciplina.create');
+        
     }
 
     /**
@@ -59,7 +61,10 @@ class DisciplinaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $disciplina = Disciplina::findOrFail($id);
+        $horario_disciplinas = $disciplina->horario_disciplinas;
+     
+        return view('disciplina.show',compact('disciplina','horario_disciplinas'));
     }
 
     /**
@@ -67,7 +72,9 @@ class DisciplinaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+                        
+        $disciplina = Disciplina::findOrFail($id);
+        return view('disciplina.edit',compact('disciplina'));
     }
 
     /**
@@ -75,7 +82,17 @@ class DisciplinaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        request()->validate([
+            
+            'nombre' => 'required',
+            'capacidad' => 'required',
+
+        ]); //validacion de los campos osea que tienen que tener algun valor 
+        $disciplina = Disciplina::findOrFail($id);
+        $disciplina->update($request->all());
+
+       return redirect()->route('disciplina.index', $disciplina)
+            ->with('success', 'Disciplina actualizada exitosamente.');
     }
 
     /**
@@ -83,6 +100,8 @@ class DisciplinaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $disciplina = Disciplina::findOrFail($id);
+        $disciplina->delete();
+        return redirect()->route('disciplina.index', $disciplina); 
     }
 }

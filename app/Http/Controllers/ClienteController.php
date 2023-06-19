@@ -10,6 +10,8 @@ use Spatie\Permission\Models\Role;
 use App\Models\Membresia;
 use App\Models\Periodo;
 use App\Models\Disciplina;
+use App\Models\Tipo_Pago;
+use Carbon\Carbon;
 class ClienteController extends Controller
 {
     /**
@@ -26,6 +28,7 @@ class ClienteController extends Controller
 
         $periodos = Periodo::all();
         $membresias = Membresia::all();
+        $tipo_pagos = Tipo_Pago::all();
         
 
         //asignar la cabecera de nuestro datatable
@@ -40,7 +43,7 @@ class ClienteController extends Controller
             'membresia',
              ['label' => 'Actions', 'no-export' => true],
         ];
-        return view('cliente.index',compact('clientes','periodos','membresias','heads'));
+        return view('cliente.index',compact('clientes','periodos','membresias','heads','tipo_pagos'));
 
     }
 
@@ -69,16 +72,21 @@ class ClienteController extends Controller
             'sexo' => 'required',
             'tipo_sangre' => 'required',
             'peso' => 'required',
-            'direccion' => 'required',
+            'desde' => 'required',
             'password' => 'required',
             'id_tarjeta' => 'required',
             'id_rol'    => 'required',
-
-            'descripcion' => 'required',
-
-
+            
         ]); //validacion de los campos osea que tienen que tener algun valor 
         
+        //creamos la variable fecha_ini para poder sumarle la cantidad de dias que dura la membresia
+        $fecha_ini = Carbon::parse($request->desde);
+        $membresia = Membresia::find($request->id_membresia);
+        $fecha_fin = $fecha_ini->addDays($membresia->duracion);
+        $periodo = Periodo::create([
+            'desde' => $request->desde,
+            'hasta' => $fecha_fin,
+        ]);
     
 
         User::create([
@@ -96,15 +104,16 @@ class ClienteController extends Controller
             'password' => Hash::make($request->password),
             'id_tarjeta' => $request->id_tarjeta,
             'id_rol'    => $request->id_rol,
-            'id_periodo' => $request->id_periodo,
+            'id_periodo' => $periodo->id,
             'id_membresia' => $request->id_membresia,
             'descripcion' => $request->descripcion,
         ]);
+
         
         $user = User::where('email', $request->email)->first(); 
         $role = Role::find($request->id_rol);
         $user->assignRole($role);
-        return redirect()->route('cliente.create')->with('success','Cliente creado con éxito.');
+        return redirect()->route('cliente.index')->with('success','Cliente creado con éxito.');
 
         
     }

@@ -37,7 +37,7 @@
                         </div>
                         <div class="row" >
                             <x-adminlte-textarea name="descripcion" label="Description" rows=5 label-class="text-lightblue" fgroup-class="col-md-6"
-                            igroup-size="sm" placeholder="Insert description...">
+                            igroup-size="sm" placeholder="Inserte descripcion...">
                             <x-slot name="prependSlot">
                                 <div class="input-group-text bg-dark">
                                     <i class="fas fa-lg fa-file-alt text-warning"></i>

@@ -68,7 +68,13 @@ class Horario_disciplinaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $horario_disciplina = Horario_disciplina::findOrFail($id);
+        $disciplina = Disciplina::findOrFail($horario_disciplina->id_disciplina);
+        
+
+
+        // Pasar los datos del sauna a la vista
+        return view('horario_disciplina.show', compact('horario_disciplina','disciplina'));
     }
 
     /**
@@ -76,15 +82,36 @@ class Horario_disciplinaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+                //esto esta bien    
+                $horario_disciplina = Horario_disciplina::findOrFail($id);
+                $lista_disciplinas = Disciplina::all();
+        
+                // $disciplinas = $membresia->disciplinas; ESTO SIRVE PARA MOSTRAR LAS DISCIPLINAS QUE TIENE UNA MEMBRESIA
+                $disciplina = Disciplina::findOrFail($horario_disciplina->id_disciplina);
+                $valorPorDefecto = $disciplina->id;  
+                
+                //   return view('empleado.edit',compact('empleado'));
+                   return view('horario_disciplina.edit',compact('horario_disciplina','disciplina','lista_disciplinas','valorPorDefecto'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
+    {   
+        request()->validate([
+            
+            'id_disciplina' => 'required',
+            'dia' => 'required',
+            'hora_inicio' => 'required',
+            'hora_fin' => 'required',
+
+        ]); //validacion de los campos osea que tienen que tener algun valor 
+        $horario_disciplina = Horario_disciplina::findOrFail($id);
+       
+        $horario_disciplina->update($request->all());
+
+       return redirect()->route('horario_disciplina.index', $horario_disciplina);
     }
 
     /**
@@ -92,6 +119,8 @@ class Horario_disciplinaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $horario_disciplina = Horario_disciplina::findOrFail($id);
+        $horario_disciplina->delete();
+        return redirect()->route('horario_disciplina.index', $horario_disciplina); 
     }
 }

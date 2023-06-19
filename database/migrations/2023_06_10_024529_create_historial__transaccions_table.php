@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('historial_transaccions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ci_cliente');
+            $table->unsignedBigInteger('ci_cliente')->nullable();
             $table->unsignedSmallInteger('monto');
             $table->timestamp('fecha_transaccion')->default(now());
             $table->text('descripcion')->nullable();
@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('membresia_adquirida', 50);
             $table->unsignedBigInteger('cod_pago');
             $table->unsignedBigInteger('id_promocion')->nullable();
-
-            $table->foreign('ci_cliente')->references('id')->on('users');
+            // este cambio se hizo  ->onUpdate('NO ACTION')->onDelete('SET NULL');
+            $table->foreign('ci_cliente')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('SET NULL');
             $table->foreign('cod_pago')->references('id')->on('tipo_pagos');
             $table->foreign('id_promocion')->references('id')->on('promocions');
             $table->timestamps();
