@@ -24,7 +24,13 @@
             <p><strong>rol:</strong> {{$roles->where('id', $cliente->id_rol)->first()->name}}</p>
             <p><strong>periodo inicio:</strong> {{$periodos->where('id', $cliente->id_periodo)->first()->desde}}</p>
             <p><strong>periodo fin:</strong> {{$periodos->where('id', $cliente->id_periodo)->first()->hasta}}</p>
+            {{-- <p><strong>membresia:</strong> {{$membresias->where('id', $cliente->id_membresia)->first()->nombre}}</p> --}}
+            @if ($cliente->id_membresia != null)
             <p><strong>membresia:</strong> {{$membresias->where('id', $cliente->id_membresia)->first()->nombre}}</p>
+            @else
+            <p><strong>membresia:</strong></p>
+            @endif
+
             <p><strong>descripcion:</strong> {{ $cliente->descripcion }}</p>
 
         </div>

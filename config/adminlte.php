@@ -320,13 +320,14 @@ return [
         ['header' => 'CONFIGURACION DE CUENTA'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'route'  => 'perfil.show',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'registrar usuario',
             'route'  => 'cliente.create',
             'icon' => 'fas fa-user-plus',
+            'can'   =>  'admin-access',
         ],
         [
             'text' => 'change_password',
@@ -390,20 +391,22 @@ return [
         //     'url'        => '#',
         // ],
         [
-            'text' => 'Clientes',
-          //  'url'  => 'admin/settings',
+            'text' => 'Clientes',   
           'route'  =>  'cliente.index',
             'icon' => 'fas fa-users',
+            'can'   =>  'admin-access'
             
         ],
         [
             'text'       => 'Empleados',
             'icon'       => 'fas fa-users',
+            'can'   =>  'admin-access',
             'submenu'    => [
                 [
                     'text' => 'Lista de Empleados',
                     'icon'       => 'fas fa-list',
-                    'route'  => 'empleado.index'
+                    'route'  => 'empleado.index',
+                    'can'   =>  'admin-access'
                 ],
 
             ]
@@ -411,32 +414,38 @@ return [
         [
             'text'       => 'Disciplinas',
             'icon'       => 'fas fa-dumbbell',
+            'can'   =>  'admin-access',
             'submenu'    => [
                 [
                     'text' => 'Lista de Disciplinas',
                     'icon'       => 'fas fa-list',
-                    'route'  => 'disciplina.index'
+                    'route'  => 'disciplina.index',
+                    'can'   =>  'admin-access'
                 ],
                 [
                     'text' => 'Registrar Disciplina',
                     'icon'       => 'fas fa-user-plus',
-                    'route'  =>  'disciplina.create'
+                    'route'  =>  'disciplina.create',
+                    'can'   =>  'admin-access'
                 ],
             ]
         ],
         [
             'text'       => 'Horarios Disciplina',
             'icon'       => 'fas fa-clock',
+            'can'   =>  'admin-access',
             'submenu'    => [
                 [
                     'text' => 'Lista de Horarios',
                     'icon'       => 'fas fa-list',
-                    'route'  => 'horario_disciplina.index'
+                    'route'  => 'horario_disciplina.index',
+                    'can'   =>  'admin-access'
                 ],
                 [
                     'text' => 'crear horario',
                     'icon'       => 'fas fa-list',
-                    'route'  => 'horario_disciplina.create'
+                    'route'  => 'horario_disciplina.create',
+                    'can'   =>  'admin-access'
                 ],
 
             ]
@@ -444,16 +453,53 @@ return [
         [
             'text'       => 'Membresias',
             'icon'       => 'fas fa-id-card-alt',
+            'can'   =>  'admin-access',
             'submenu'    => [
                 [
                     'text' => 'Lista de membresias',
                     'icon'       => 'fas fa-list',
-                    'route'  => 'membresia.index'
+                    'route'  => 'membresia.index',
+                    'can'   =>  'admin-access'
                 ],
                 [
                     'text' => 'Crear membresia',
                     'icon'       => 'fas fa-list',
-                    'route'  => 'membresia.create'
+                    'route'  => 'membresia.create',
+                    'can'   =>  'admin-access'
+                ],
+
+            ]
+        ],
+        [
+            'text'       => 'Historial de pagos',
+            'icon'       => 'fas fa-id-card-alt',
+            'can'   =>  'admin-access',
+            'submenu'    => [
+                [
+                    'text' => 'pagos',
+                    'icon'       => 'fas fa-list',
+                    'route'  => 'pago.index',
+                    'can'   =>  'admin-access'
+                ],
+
+
+            ]
+        ],
+        [
+            'text'       => 'Promociones',
+            'icon'       => 'fas fa-id-card-alt',
+            'can'   =>  'admin-access',
+            'submenu'    => [
+                [
+                    'text' => 'Lista de Promociones',
+                    'icon'       => 'fas fa-list',
+                    'route'  => 'promocion.index',
+                    'can'   =>  'admin-access'
+                ],
+                [
+                    'text' => 'Crear membresia',
+                    'icon'       => 'fas fa-list',
+                   // 'route'  => 'membresia.create'
                 ],
 
             ]

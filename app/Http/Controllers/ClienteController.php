@@ -12,6 +12,7 @@ use App\Models\Periodo;
 use App\Models\Disciplina;
 use App\Models\Tipo_Pago;
 use Carbon\Carbon;
+use App\Models\Promocion;
 class ClienteController extends Controller
 {
     /**
@@ -29,11 +30,12 @@ class ClienteController extends Controller
         $periodos = Periodo::all();
         $membresias = Membresia::all();
         $tipo_pagos = Tipo_Pago::all();
+        $promociones = Promocion::all();
         
 
         //asignar la cabecera de nuestro datatable
         $heads = [
-            'nro_carnet',
+            'numero de carnet',
             'nombre',
             'apellido',
             'email',
@@ -41,9 +43,9 @@ class ClienteController extends Controller
             'fin de membresia',
             'estado',
             'membresia',
-             ['label' => 'Actions', 'no-export' => true],
+             ['label' => 'Acciones', 'no-export' => true],
         ];
-        return view('cliente.index',compact('clientes','periodos','membresias','heads','tipo_pagos'));
+        return view('cliente.index',compact('clientes','periodos','membresias','heads','tipo_pagos','promociones'));
 
     }
 
@@ -136,15 +138,10 @@ class ClienteController extends Controller
             ]);
         }
 
-
-
-        
         $user = User::where('email', $request->email)->first(); 
         $role = Role::find($request->id_rol);
         $user->assignRole($role);
         return redirect()->route('cliente.index')->with('success','Cliente creado con éxito.');
-
-        
     }
 
     /**
@@ -224,6 +221,6 @@ class ClienteController extends Controller
     {        
         $cliente = User::find($id);
         $cliente->delete();
-        return redirect()->route('cliente.index', $cliente);
+        return redirect()->route('cliente.index', $cliente)->with('deleted','Cliente eliminado con éxito');
     }
 }

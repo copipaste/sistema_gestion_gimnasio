@@ -26,18 +26,13 @@ class EmpleadoController extends Controller
 
         //asignar la cabecera de nuestro datatable
         $heads = [
-            'nro_carnet',
+            'numero de carnet',
             'nombre',
             'apellido',
             'telefono',
             'direccion',
         //   'especialidad',
             ['label' => 'Actions', 'no-export' => true],
-            // ['label' => 'Actions', 'no-export' => true],
-
-
-   
-
         ];
         return view('empleado.index',compact('empleados','heads'));
 
@@ -57,24 +52,24 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
+        // request()->validate([
             
-            'nombre' => 'required',
-            'apellido' => 'required',
-            'cedula' => 'required',
-            'telefono' => 'required',
-            'direccion' => 'required',
-            'email' => 'required',
-            'especialidad_id' => 'required',
-            'fecha_ingreso' => 'required'
+        //     'nombre' => 'required',
+        //     'apellido' => 'required',
+        //     'cedula' => 'required',
+        //     'telefono' => 'required',
+        //     'direccion' => 'required',
+        //     'email' => 'required',
+        //     'especialidad_id' => 'required',
+        //     'fecha_ingreso' => 'required'
 
-        ]); //validacion de los campos osea que tienen que tener algun valor 
+        // ]); //validacion de los campos osea que tienen que tener algun valor 
       
       
-         $empleado = Empleado::create($request->all());
+        //  $empleado = Empleado::create($request->all());
          
      
-        return redirect()->route('empleado.index', $empleado); 
+        // return redirect()->route('empleado.index', $empleado); 
     }
 
     /**
@@ -128,7 +123,7 @@ class EmpleadoController extends Controller
      */
     public function destroy(string $id)
     {
-        $empleado = Empleado::find($id);
+        $empleado = User::find($id);
         $empleado->delete();
         return redirect()->route('empleado.index', $empleado)->with('mensaje','registro eliminado correctamente');  
     }

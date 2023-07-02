@@ -11,7 +11,7 @@ class Historial_Transaccion extends Model
     protected $table = 'historial_transaccions';
 
     protected $fillable = [
-        'ci_cliente',
+        'id_cliente',
         'monto',
         'fecha_transaccion',
         'descripcion',
@@ -20,5 +20,6 @@ class Historial_Transaccion extends Model
         'membresia_adquirida',
         'cod_pago',   
         'id_promocion',
+        'id_tramitador',
     ];
 }

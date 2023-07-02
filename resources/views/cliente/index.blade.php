@@ -15,6 +15,16 @@
         }, 5000); // Cambia 5000 por la duración en milisegundos que deseas (por ejemplo, 5000 para 5 segundos)
     </script>
 @endif
+@if (session('deleted'))
+    <x-adminlte-alert id="success-alert" theme="success" title="Success">
+        {{ session('deleted') }}
+    </x-adminlte-alert>
+    <script>
+        setTimeout(function(){
+            document.getElementById('success-alert').style.display = 'none';
+        }, 5000); // Cambia 5000 por la duración en milisegundos que deseas (por ejemplo, 5000 para 5 segundos)
+    </script>
+@endif
 
 <div class="card">
     <div class="card-body">
@@ -53,10 +63,10 @@
                                     data-toggle="modal" data-target="#modalUpdateMembresia{{ $cliente->id }}">
                                     <i class="fas fa-lg fa-fw fa-calendar-day"></i>
                                 </button>
+{{-- aqui actualizamos el periodo--}}
+                                <x-adminlte-modal id="modalUpdateMembresia{{ $cliente->id }}" title="Actualizar Membresia" size="lg" theme="dark" v-centered static-backdrop scrollable>
 
-                                <x-adminlte-modal id="modalUpdateMembresia{{ $cliente->id }}" title="Actualizar Membresia" size="sm" theme="dark" v-centered static-backdrop scrollable>
 
-                                
                                     <form action="{{ route('periodo.update',$cliente) }}" method="POST">
                                         @method('PUT') {{-- Utilizamos el método PUT para actualizar el recurso --}}
                                         @csrf
@@ -69,6 +79,17 @@
                                                                 <option value="{{ $membresia->id }}"> {{ $membresia->nombre }}</option>
                                                             @endforeach
                                                         </select>
+                                                        
+                                                        {{-- --codigooooo prueba --}}
+                                                        <label for="tipo_pago">Promocion</label>
+                                                        <select name="id_promocion" id="id_promocion" class="form-control" required>
+                                                            <option value="">Seleccione una promo</option>
+                                                            @foreach ($promociones as $promocion)
+                                                                <option value="{{ $promocion->id }}"> {{ $promocion->nombre }}</option>
+                                                            @endforeach
+                                                                <option value="">NINGUNA</option>
+                                                        </select>
+                                                        {{-- --codigooooo prueba --}}
 
                                                         <label for="tipo_pago">Tipo de Pago</label>
                                                         <select name="tipo_pago" id="tipo_pago" class="form-control" required>
@@ -94,6 +115,7 @@
                                             </form>
                                         
                             </x-adminlte-modal>
+{{-- aqui terminamos de actualizar el periodo  --}}
                                 
 {{-- Custom -- esto es para el de editar membresía --}}
                             <a href="{{ route('cliente.edit', $cliente) }}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
@@ -105,6 +127,10 @@
                             <a href="{{ route('cliente.show', $cliente) }}" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
                                 <i class="fa fa-lg fa-fw fa-eye"></i>
                             </a>
+                            <a href="{{ route('pdf.generate', $cliente) }}" class="btn btn-xs btn-default text-black mx-1 shadow" title="Details">
+                                <i class="fa fa-lg fa-fw fa-print"></i>
+                            </a>
+
                         </div>
                     </td>
                     {{-- Custom modal de eliminar--}}

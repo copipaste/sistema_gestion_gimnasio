@@ -11,6 +11,10 @@ USE App\Http\Controllers\MembresiaController;
 use App\Models\User;
 use App\Http\Controllers\PeriodoController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PdfController;
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\PromocionController;   
 
 /*
 |--------------------------------------------------------------------------
@@ -37,12 +41,14 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');                                                 
 //agregamos un middleware para que solo los usuarios con rol de admin puedan acceder a la ruta de editar,eliminar,crear etc de sauna con "->middleware('can:admin-access');"
-Route::resource('/sauna', SaunaController::class)->names('sauna')->middleware('auth');  //->middleware('can:admin-access');
-Route::resource('/empleado', EmpleadoController::class)->names('empleado')->middleware('auth');
-Route::resource('/cliente', ClienteController::class)->names('cliente')->middleware('auth');
-Route::resource('/disciplina', DisciplinaController::class)->names('disciplina')->middleware('auth');
-Route::resource('/horario_disciplina',Horario_disciplinaController::class)->names('horario_disciplina')->middleware('auth');
-Route::resource('/membresia',MembresiaController::class)->names('membresia')->middleware('auth');
+Route::resource('/sauna', SaunaController::class)->names('sauna')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/empleado', EmpleadoController::class)->names('empleado')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/cliente', ClienteController::class)->names('cliente')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/disciplina', DisciplinaController::class)->names('disciplina')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/horario_disciplina',Horario_disciplinaController::class)->names('horario_disciplina')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/membresia',MembresiaController::class)->names('membresia')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/pago',PagoController::class)->names('pago')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/promocion',PromocionController::class)->names('promocion')->middleware('auth')->middleware('can:admin-access');
 ////////////////////////////esto es practica de cambio de contraseña///////////////////////////////
 Route::get('/change-password', function() {
     $user = Auth::user();
@@ -52,6 +58,12 @@ Route::get('/change-password', function() {
 
 Route::put('/usuarios/{id}/update-password', [PassController::class, 'updatePassword'])->name('usuarios.update-password')->middleware('auth');
 
-Route::put('/periodo/{id}', [PeriodoController::class, 'update'])->name('periodo.update')->middleware('auth');
+Route::put('/periodo/{id}', [PeriodoController::class, 'update'])->name('periodo.update')->middleware('auth')->middleware('can:admin-access');
 
 
+
+Route::get('/pdf/{id}', [PdfController::class, 'generatePDF'])->name('pdf.generate')->middleware('auth')->middleware('can:admin-access');
+//Route::get('/pdf/{id}/imprimirNotaConDatos', [PdfController::class, 'imprimirNotaConDatos'])->name('pdf.datos')->middleware('auth');
+
+
+Route::get('/perfil', [PerfilController::class, 'show'])->name('perfil.show')->middleware('auth');

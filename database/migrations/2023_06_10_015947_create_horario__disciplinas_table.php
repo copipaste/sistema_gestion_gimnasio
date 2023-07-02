@@ -9,17 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('horario_disciplinas', function (Blueprint $table) {
-            $table->UnsignedBigInteger('id');  //este tiene que ser autoincrementable   
-            $table->UnsignedBigInteger('id_disciplina');
-            $table->primary(['id_disciplina', 'id']);
-            $table->foreign('id_disciplina')->references('id')->on('disciplinas')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_disciplina');
             $table->enum('dia', ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']);
             $table->time('hora_inicio');
             $table->time('hora_fin');
             $table->timestamps();
+
+            $table->foreign('id_disciplina')->references('id')->on('disciplinas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

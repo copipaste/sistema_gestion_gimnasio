@@ -70,7 +70,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/La_Paz',
+    // aqui  quite UTC coloque America/La_Paz
 
     /*
     |--------------------------------------------------------------------------
