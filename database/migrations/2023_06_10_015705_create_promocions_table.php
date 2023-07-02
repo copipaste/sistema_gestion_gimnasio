@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('promocions', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 50);
+            $table->smallInteger('dias_regalo');
+            $table->smallInteger('porcentaje_descuento');
             $table->text('descripcion')->nullable();
             $table->timestamps();
         });

@@ -10,8 +10,14 @@
         <x-adminlte-datatable id="table1" :heads="$heads" striped head-theme="dark" with-buttons>
             @foreach($historial_transacciones as $historial_transaccion)
                 <tr>
-                        <td>{{ $users->where('id', $historial_transaccion->id_cliente)->first()->nro_carnet }}</td>
-                        <td>{{ $users->where('id', $historial_transaccion->id_cliente)->first()->nombre }}</td>
+                   @if ( $historial_transaccion->id_cliente != null)
+                    <td>{{ $users->where('id', $historial_transaccion->id_cliente)->first()->nro_carnet }}</td>
+                    <td>{{ $users->where('id', $historial_transaccion->id_cliente)->first()->nombre }}</td>
+                   @else
+                   <td>null</td>
+                   <td>null</td>
+                   @endif
+                    
                     <td>{{ $historial_transaccion->monto }}</td>
                     <td>{{ $historial_transaccion->fecha_transaccion }}</td>
                     <td>{{ $users->where('id', $historial_transaccion->id_tramitador)->first()->nombre }}</td>

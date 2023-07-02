@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('historial_transaccions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ci_cliente')->nullable();
+            $table->unsignedBigInteger('id_cliente')->nullable();
             $table->unsignedSmallInteger('monto');
             $table->timestamp('fecha_transaccion')->default(now());
             $table->text('descripcion')->nullable();
@@ -27,6 +27,7 @@ return new class extends Migration
             $table->foreign('cod_pago')->references('id')->on('tipo_pagos');
             $table->foreign('id_promocion')->references('id')->on('promocions');
             $table->timestamps();
+            $table->unsignedBigInteger('id_tramitador');
         });
     }
 
