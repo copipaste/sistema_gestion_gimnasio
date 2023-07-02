@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('cod_pago');
             $table->unsignedBigInteger('id_promocion')->nullable();
             // este cambio se hizo  ->onUpdate('NO ACTION')->onDelete('SET NULL');
-            $table->foreign('ci_cliente')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('SET NULL');
+            $table->foreign('id_cliente')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('SET NULL');
             $table->foreign('cod_pago')->references('id')->on('tipo_pagos');
             $table->foreign('id_promocion')->references('id')->on('promocions');
             $table->timestamps();
