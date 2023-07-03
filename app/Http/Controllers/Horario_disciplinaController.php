@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Horario_disciplina;
+use App\Models\Horario_Disciplina;
 use App\Models\Disciplina;
 use App\Models\Horario_Membresia;
 
