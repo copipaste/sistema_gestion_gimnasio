@@ -31,7 +31,7 @@ class PromocionController extends Controller
      */
     public function create()
     {
-        //
+        return view('promocion.create');
     }
 
     /**
@@ -39,7 +39,25 @@ class PromocionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        request()->validate([
+            
+            'nombre' => 'required',
+            'dias_regalo' => 'required',
+            'porcentaje_descuento' => 'required',
+            'descripcion' => 'required',
+
+        ]); //validacion de los campos osea que tienen que tener algun valor 
+        $promocion = Promocion::create([
+            'nombre' => $request->nombre,
+            'dias_regalo' => $request->dias_regalo,
+            'porcentaje_descuento' => $request->porcentaje_descuento,
+            'descripcion' => $request->descripcion,
+        ]);
+        
+        
+
+        return redirect()->route('promocion.index', $promocion);
     }
 
     /**

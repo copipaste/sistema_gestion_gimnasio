@@ -497,9 +497,10 @@ return [
                     'can'   =>  'admin-access'
                 ],
                 [
-                    'text' => 'Crear membresia',
+                    'text' => 'Crear promocion',
                     'icon'       => 'fas fa-list',
-                   // 'route'  => 'membresia.create'
+                    'route'  => 'promocion.create',
+                    'can'  => 'admin-access'
                 ],
 
             ]
