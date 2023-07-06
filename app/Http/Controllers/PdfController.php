@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Historial_Transaccion;
-use App\Models\Membresia;
+use App\Models\User;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
-use App\Models\User;
-use PDF;
-
 
 class PdfController extends Controller
 {
@@ -17,34 +14,28 @@ class PdfController extends Controller
         // Crea una instancia de Dompdf
         $dompdf = new Dompdf();
         $cliente = User::findOrFail($id);
-        
-        // $membresias = Membresia::all();
-        // $historial_transacciones = Historial_Transaccion::where('id_cliente',$id)->get();
-
         $historial_transaccion = Historial_Transaccion::where('id_cliente', $id)
-    ->latest('fecha_transaccion') // Ordena por la columna 'fecha' en orden descendente
-    ->first(); // Obtiene solo el registro más reciente
-
+            ->latest('fecha_transaccion')
+            ->first();
 
         // Obtiene el contenido HTML que deseas convertir a PDF
-        $html = view('pdf.template')->with('cliente',$cliente)->with('historial_transaccion',$historial_transaccion)->render();
+        $html = view('pdf.template', compact('cliente', 'historial_transaccion'))->render();
 
         // Carga el contenido HTML en Dompdf
         $dompdf->loadHtml($html);
 
+        // Configura el tamaño y la orientación del papel
         $dompdf->setPaper('A6', 'portrait');
+
         // Renderiza el contenido HTML en PDF
         $dompdf->render();
 
         // Genera el PDF y lo muestra en el navegador para descarga
-        return $dompdf->stream('archivo.pdf', ['Attachment' => false]);
-    }
+        // return $dompdf->stream('archivo.pdf', ['Attachment' => false]);
 
-    public function imprimirNotaConDatos(Request $request, $id)
-    {
-        // $cliente = User::findOrFail($id);
-        // $pdf = PDF::loadView('pdf.template', compact('cliente'));
-        // return $pdf->stream('nota.pdf');
+        $dompdf->stream('archivo.pdf', ['Attachment' => true]);
+        exit;
     }
 }
+
 
