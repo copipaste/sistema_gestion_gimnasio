@@ -12,8 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Tipo_pago::create(['tipo' => 'Efectivo']);
-        Tipo_pago::create(['tipo' => 'Tarjeta']);
+        Tipo_pago::create(['nombre' => 'Efectivo']);
+        Tipo_pago::create(['nombre' => 'Tarjeta']);
     }
 
     /**
