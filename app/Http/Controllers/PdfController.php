@@ -33,8 +33,8 @@ class PdfController extends Controller
         // Genera el PDF y lo muestra en el navegador para descarga
         // return $dompdf->stream('archivo.pdf', ['Attachment' => false]);
 
-        $dompdf->stream('archivo.pdf', ['Attachment' => true]);
-        exit;
+        return $dompdf->stream('archivo.pdf', ['Attachment' => true]);
+        
     }
 }
 
