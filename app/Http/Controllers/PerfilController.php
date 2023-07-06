@@ -19,5 +19,7 @@ class PerfilController extends Controller
         $roles = Role::all();
         // Pasar los datos del empleado a la vista
         return view('perfil.show', compact('user','periodos','membresias','roles'));
+
+        
     }
 }

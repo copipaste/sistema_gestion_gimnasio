@@ -318,193 +318,215 @@ return [
         //     'label_color' => 'success',
         // ],
         ['header' => 'CONFIGURACION DE CUENTA'],
-        [
-            'text' => 'profile',
-            'route'  => 'perfil.show',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'registrar usuario',
-            'route'  => 'cliente.create',
-            'icon' => 'fas fa-user-plus',
-            'can'   =>  'admin-access',
-        ],
-        [
-            'text' => 'change_password',
-          //  'url'  => 'admin/settings',
-          'route'  =>  'change-password',
-            'icon' => 'fas fa-fw fa-lock',
-            
-        ],
-        // [
-        //     'text'    => 'multilevel',
-        //     'icon'    => 'fas fa-fw fa-share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //         [
-        //             'text'    => 'level_one',
-        //             'url'     => '#',
-        //             'submenu' => [
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url'  => '#',
-        //                 ],
-        //                 [
-        //                     'text'    => 'level_two',
-        //                     'url'     => '#',
-        //                     'submenu' => [
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                     ],
-        //                 ],
-        //             ],
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //     ],
-        // ],
-        // ['header' => 'labels'],
-        // [
-        //     'text'       => 'important',
-        //     'icon_color' => 'red',
-        //     'url'        => '#',
-        // ],
-        // [
-        //     'text'       => 'warning',
-        //     'icon_color' => 'yellow',
-        //     'url'        => '#',
-        // ],
-        // [
-        //     'text'       => 'information',
-        //     'icon_color' => 'cyan',
-        //     'url'        => '#',
-        // ],
-        [
-            'text' => 'Clientes',   
-          'route'  =>  'cliente.index',
-            'icon' => 'fas fa-users',
-            'can'   =>  'admin-access'
-            
-        ],
-        [
-            'text'       => 'Empleados',
-            'icon'       => 'fas fa-users',
-            'can'   =>  'admin-access',
-            'submenu'    => [
-                [
-                    'text' => 'Lista de Empleados',
-                    'icon'       => 'fas fa-list',
-                    'route'  => 'empleado.index',
-                    'can'   =>  'admin-access'
-                ],
 
-            ]
-        ],
         [
-            'text'       => 'Disciplinas',
-            'icon'       => 'fas fa-dumbbell',
-            'can'   =>  'admin-access',
+            'text'       => 'Gestionar Usuario',    //PAQUE GESTIONAR USUARIO
+            'icon'       => 'fas fa-folder',
             'submenu'    => [
                 [
-                    'text' => 'Lista de Disciplinas',
-                    'icon'       => 'fas fa-list',
-                    'route'  => 'disciplina.index',
-                    'can'   =>  'admin-access'
-                ],
-                [
-                    'text' => 'Registrar Disciplina',
-                    'icon'       => 'fas fa-user-plus',
-                    'route'  =>  'disciplina.create',
-                    'can'   =>  'admin-access'
+                    'text' => 'registrar usuario',
+                    'route'  => 'cliente.create',
+                    'icon' => 'fas fa-user-plus',
+                    'can'   =>  'admin-access',
                 ],
             ]
         ],
+
         [
-            'text'       => 'Horarios Disciplina',
-            'icon'       => 'fas fa-clock',
-            'can'   =>  'admin-access',
+            'text'       => 'Gestionar Perfil', //PAQUETE GESTIONAR PERFIL
+            'icon'       => 'fas fa-folder',
             'submenu'    => [
                 [
-                    'text' => 'Lista de Horarios',
-                    'icon'       => 'fas fa-list',
-                    'route'  => 'horario_disciplina.index',
-                    'can'   =>  'admin-access'
+                    'text' => 'profile',
+                    'route'  => 'perfil.show',
+                    'icon' => 'fas fa-fw fa-user',
                 ],
+        
                 [
-                    'text' => 'crear horario',
-                    'icon'       => 'fas fa-list',
-                    'route'  => 'horario_disciplina.create',
-                    'can'   =>  'admin-access'
+                    'text' => 'change_password',
+                  'route'  =>  'change-password',
+                    'icon' => 'fas fa-fw fa-lock',
                 ],
-
             ]
         ],
+
         [
-            'text'       => 'Membresias',
-            'icon'       => 'fas fa-id-card-alt',
-            'can'   =>  'admin-access',
+            'text'       => 'Gestionar Servicio',  //PAQUE GESTIONAR SERVICIO
+            'icon'       => 'fas fa-folder',
             'submenu'    => [
                 [
-                    'text' => 'Lista de membresias',
-                    'icon'       => 'fas fa-list',
-                    'route'  => 'membresia.index',
+                    'text' => 'Clientes',   
+                  'route'  =>  'cliente.index',
+                    'icon' => 'fas fa-users',
                     'can'   =>  'admin-access'
+                    
                 ],
                 [
-                    'text' => 'Crear membresia',
-                    'icon'       => 'fas fa-list',
-                    'route'  => 'membresia.create',
-                    'can'   =>  'admin-access'
+                    'text'       => 'Entrenadores',
+                    'icon'       => 'fas fa-users',
+                    'can'   =>  'admin-access',
+                    'submenu'    => [
+                        [
+                            'text' => 'Lista de Entrenadores',
+                            'icon'       => 'fas fa-list',
+                            'route'  => 'empleado.index',
+                            'can'   =>  'admin-access'
+                        ],
+        
+                    ]
                 ],
 
+                [
+                    'text'       => 'Membresias',
+                    'icon'       => 'fas fa-id-card-alt',
+                    'can'   =>  'admin-access',
+                    'submenu'    => [
+                        [
+                            'text' => 'Lista de membresias',
+                            'icon'       => 'fas fa-list',
+                            'route'  => 'membresia.index',
+                            'can'   =>  'admin-access'
+                        ],
+                        [
+                            'text' => 'Crear membresia',
+                            'icon'       => 'fas fa-list',
+                            'route'  => 'membresia.create',
+                            'can'   =>  'admin-access'
+                        ],
+        
+                    ]
+                ],
+
+                [
+                    'text'       => 'Disciplinas',
+                    'icon'       => 'fas fa-dumbbell',
+                    'can'   =>  'admin-access',
+                    'submenu'    => [
+                        [
+                            'text' => 'Lista de Disciplinas',
+                            'icon'       => 'fas fa-list',
+                            'route'  => 'disciplina.index',
+                            'can'   =>  'admin-access'
+                        ],
+                        [
+                            'text' => 'Registrar Disciplina',
+                            'icon'       => 'fas fa-user-plus',
+                            'route'  =>  'disciplina.create',
+                            'can'   =>  'admin-access'
+                        ],
+                    ]
+                ],
+
+                [
+                    'text'       => 'Horarios Disciplina',
+                    'icon'       => 'fas fa-clock',
+                    'can'   =>  'admin-access',
+                    'submenu'    => [
+                        [
+                            'text' => 'Lista de Horarios',
+                            'icon'       => 'fas fa-list',
+                            'route'  => 'horario_disciplina.index',
+                            'can'   =>  'admin-access'
+                        ],
+                        [
+                            'text' => 'crear horario',
+                            'icon'       => 'fas fa-list',
+                            'route'  => 'horario_disciplina.create',
+                            'can'   =>  'admin-access'
+                        ],
+        
+                    ]
+                ],
+                [
+                    'text'       => 'Productos',
+                    'icon'       => 'fas fa-dumbbell',
+                    'can'   =>  'admin-access',
+                    'submenu'    => [
+                         [
+                             'text' => 'Lista de Productos',
+                             'icon'       => 'fas fa-list',
+                             'route'  => 'producto.index',
+                             'can'   =>  'admin-access',
+                         ],
+                         [
+                             'text' => 'Lista de Categorias',
+                             'icon'       => 'fas fa-list-ol',
+                             'route'  => 'categoria.index',
+                             'can'   =>  'admin-access',
+                         ],
+                          [
+                              'text' => 'Venta de Productos',
+                              'icon'       => 'fas fa-list-ol',
+                              'route'  => 'venta.index',
+                              'can'   =>  'admin-access',
+                          ],
+                    ]
+                ],
+                [
+                    'text'       => 'Promociones',
+                    'icon'       => 'fas fa-id-card-alt',
+                    'can'   =>  'admin-access',
+                    'submenu'    => [
+                        [
+                            'text' => 'Lista de Promociones',
+                            'icon'       => 'fas fa-list',
+                            'route'  => 'promocion.index',
+                            'can'   =>  'admin-access'
+                        ],
+                        [
+                            'text' => 'Crear promocion',
+                            'icon'       => 'fas fa-list',
+                            'route'  => 'promocion.create',
+                            'can'  => 'admin-access'
+                        ],
+        
+                    ]
+                ],
+                
             ]
         ],
+
+
         [
-            'text'       => 'Historial de pagos',
-            'icon'       => 'fas fa-id-card-alt',
-            'can'   =>  'admin-access',
+            'text'       => 'Gestionar Venta',  //PAQUE GESTIONAR VENTAS
+            'icon'       => 'fas fa-folder',
             'submenu'    => [
+                // [
+                //     'text' => 'Lista de Disciplinas',
+                //     'icon'       => 'fas fa-list',
+                //     'route'  => 'disciplina.index'
+                // ],
+                // [
+                //     'text' => 'Registrar Disciplina',
+                //     'icon'       => 'fas fa-user-plus',
+                //     'route'  =>  'disciplina.create'
+                // ],
                 [
-                    'text' => 'pagos',
-                    'icon'       => 'fas fa-list',
-                    'route'  => 'pago.index',
-                    'can'   =>  'admin-access'
+                    'text'       => 'Historial de pagos',
+                    'icon'       => 'fas fa-id-card-alt',
+                    'can'   =>  'admin-access',
+                    'submenu'    => [
+                        [
+                            'text' => 'pagos',
+                            'icon'       => 'fas fa-list',
+                            'route'  => 'pago.index',
+                            'can'   =>  'admin-access'
+                        ],
+        
+        
+                    ]
                 ],
-
-
             ]
         ],
-        [
-            'text'       => 'Promociones',
-            'icon'       => 'fas fa-id-card-alt',
-            'can'   =>  'admin-access',
-            'submenu'    => [
-                [
-                    'text' => 'Lista de Promociones',
-                    'icon'       => 'fas fa-list',
-                    'route'  => 'promocion.index',
-                    'can'   =>  'admin-access'
-                ],
-                [
-                    'text' => 'Crear promocion',
-                    'icon'       => 'fas fa-list',
-                    'route'  => 'promocion.create',
-                    'can'  => 'admin-access'
-                ],
 
-            ]
-        ],
+
+
+
+
+
+        
+
+
 
         // [
         //     'text'       => 'Sauna',

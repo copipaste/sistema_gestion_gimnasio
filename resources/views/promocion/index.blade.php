@@ -46,7 +46,7 @@
                             <button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete" data-toggle="modal" data-target="#modalCustom{{ $promocion->id }}">
                                 <i class="fa fa-lg fa-fw fa-trash"></i>
                             </button>
-                            <a href="{{ route('promocion.show', $promocion) }}" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+                           <a href="{{ route('promocion.show', $promocion) }}" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
                                 <i class="fa fa-lg fa-fw fa-eye"></i>
                             </a>
 

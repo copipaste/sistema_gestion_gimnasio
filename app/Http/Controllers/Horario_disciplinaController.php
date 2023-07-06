@@ -7,7 +7,7 @@ use App\Models\Horario_Disciplina;
 use App\Models\Disciplina;
 use App\Models\Horario_Membresia;
 
-class Horario_disciplinaController extends Controller
+class Horario_disciplinaController   extends Controller
 {
     /**
      * Display a listing of the resource.

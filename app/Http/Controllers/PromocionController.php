@@ -54,8 +54,6 @@ class PromocionController extends Controller
             'porcentaje_descuento' => $request->porcentaje_descuento,
             'descripcion' => $request->descripcion,
         ]);
-        
-        
 
         return redirect()->route('promocion.index', $promocion);
     }
@@ -65,7 +63,8 @@ class PromocionController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $promocion = Promocion::findOrFail($id);
+        return view('promocion.show',compact('promocion'));
     }
 
     /**
@@ -73,7 +72,8 @@ class PromocionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $promocion = Promocion::findOrFail($id);
+        return view('promocion.edit',compact('promocion'));
     }
 
     /**
@@ -81,7 +81,19 @@ class PromocionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        request()->validate([
+            
+            'nombre' => 'required',
+            'dias_regalo' => 'required',
+            'porcentaje_descuento' => 'required',
+            'descripcion' => 'required',
+
+        ]); //validacion de los campos osea que tienen que tener algun valor 
+        $promocion = Promocion::findOrFail($id);
+       
+        $promocion->update($request->all());
+
+       return redirect()->route('promocion.index', $promocion);
     }
 
     /**

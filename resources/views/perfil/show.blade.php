@@ -7,19 +7,38 @@
 
 @section('content')
 
-    <div class="card">
+    <div class="card ">
         <div class="card-body"> 
             <p><strong>numero de carnet:</strong> {{ $user->nro_carnet }}</p>
             <p><strong>nombre:</strong> {{ $user->nombre }}</p>
             <p><strong>apellido:</strong> {{ $user->apellido }}</p>
             <p><strong>fecha de nacimiento:</strong> {{ $user->fecha_nacimiento }}</p>
             <p><strong>telefono principal:</strong> {{ $user->telefono_principal }}</p>
-            <p><strong>telefono de emergencia:</strong> {{ $user->telefono_emergencia }}</p>
+            @if ($user->telefono_emergencia != null)
+                <p><strong>telefono emergencia:</strong> {{ $user->telefono_emergencia }}</p>
+            @else
+                <p><strong>telefono emergencia:</strong>  SIN DATOS</p>
+            @endif
             <p><strong>email:</strong> {{ $user->email }}</p>
             <p><strong>sexo:</strong> {{ $user->sexo }}</p>
-            <p><strong>tipo de sangre:</strong> {{ $user->tipo_sangre }}</p>
-            <p><strong>peso:</strong> {{ $user->peso }}</p>
+            @if($user->tipo_sangre != null )
+                <p><strong>tipo de sangre:</strong> {{ $user->tipo_sangre }}</p>
+            @else
+                <p><strong>tipo de sangre:</strong>  SIN DATOS</p>
+            @endif
+            @if ($user->peso != null)
+                <p><strong>peso:</strong> {{ $user->peso }}</p>
+            @else
+                <p><strong>peso:</strong>  SIN DATOS</p>
+            @endif
+
+            @if ($user->direccion != null)
             <p><strong>direccion:</strong> {{ $user->direccion }}</p>
+                
+            @else
+                <p><strong>direccion:</strong>  SIN DATOS</p>
+            @endif
+            
             <p><strong>rol:</strong> {{$roles->where('id', $user->id_rol)->first()->name}}</p>
             @if ($user->id_periodo != null)
                 <p><strong>periodo inicio:</strong> {{$periodos->where('id', $user->id_periodo)->first()->desde}}</p>
@@ -37,12 +56,6 @@
 
         </div>
     </div>
-    {{-- <div class="form-group mt-2">
-        <a href="{{ route('cliente.edit', $cliente) }}" class="btn btn-primary">Editar</a>
-        <a href="{{ route('cliente.index') }}" class="btn btn-danger">Cancelar</a>
-    </div> --}}
-   
-
 
 @stop 
 @role('admin')

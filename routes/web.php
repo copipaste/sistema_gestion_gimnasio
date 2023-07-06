@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PerfilController;
-use App\Http\Controllers\PromocionController;   
+use App\Http\Controllers\PromocionController;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\VentaController;   
 
 /*
 |--------------------------------------------------------------------------
@@ -49,9 +52,15 @@ Route::resource('/horario_disciplina',Horario_disciplinaController::class)->name
 Route::resource('/membresia',MembresiaController::class)->names('membresia')->middleware('auth')->middleware('can:admin-access');
 Route::resource('/pago',PagoController::class)->names('pago')->middleware('auth')->middleware('can:admin-access');
 Route::resource('/promocion',PromocionController::class)->names('promocion')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/producto', ProductoController::class)->names('producto')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/categoria', CategoriaController::class)->names('categoria')->middleware('auth')->middleware('can:admin-access');
+//Route::resource('/venta', VentaController::class)->names('venta')->middleware('auth')->middleware('can:admin-access');
+Route::post('/venta', [VentaController::class, 'store'])->name('venta.store')->middleware('auth')->middleware('can:admin-access');
+Route::get('/venta/create', [VentaController::class, 'create'])->name('venta.create')->middleware('auth')->middleware('can:admin-access');
+Route::get('/venta', [VentaController::class, 'index'])->name('venta.index')->middleware('auth')->middleware('can:admin-access');
 ////////////////////////////esto es practica de cambio de contraseña///////////////////////////////
 Route::get('/change-password', function() {
-    $user = Auth::user();
+    $user = Auth::user(); 
         return view('change-password',compact('user'));
 })->name('change-password')->middleware('auth');
 
