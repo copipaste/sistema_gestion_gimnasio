@@ -41,12 +41,14 @@ class ProductoController extends Controller
             'nombre' => 'required',
             'precio' => 'required',
             'stock' => 'required',
+            'id_categoria' => 'required',
         ]);
 
         Producto::create([
             'nombre' => $request->nombre,
             'precio' => $request->precio,
             'stock' => $request->stock,
+            'id_categoria' => $request->id_categoria,
         ]);
 
         return redirect()->route('producto.index')->with('success', 'Producto creado exitosamente.');
@@ -57,7 +59,9 @@ class ProductoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $id = Producto::where('id', $id)->get();
+
+        return response()->json($id);
     }
 
     /**
@@ -78,6 +82,7 @@ class ProductoController extends Controller
             'nombre' => 'required',
             'precio' => 'required',
             'stock' => 'required',
+            'id_categoria' => 'required',
         ]);
         Producto::find($id)->update($request->all());
         return redirect()->route('producto.index')->with('success', 'Producto actualizado exitosamente.');
@@ -92,4 +97,8 @@ class ProductoController extends Controller
         $producto->delete();
         return redirect()->route('producto.index')->with('success', 'Producto eliminado exitosamente.');
     }
+
+
+
+    
 }

@@ -454,12 +454,12 @@ return [
                              'route'  => 'categoria.index',
                              'can'   =>  'admin-access',
                          ],
-                          [
-                              'text' => 'Venta de Productos',
-                              'icon'       => 'fas fa-list-ol',
-                              'route'  => 'venta.index',
-                              'can'   =>  'admin-access',
-                          ],
+                         [
+                            'text' => 'Venta de Productos',
+                            'icon'       => 'fas fa-list-ol',
+                            'route'  => 'form/estimates/page',
+                            'can'   =>  'admin-access',
+                         ],
                     ]
                 ],
                 [

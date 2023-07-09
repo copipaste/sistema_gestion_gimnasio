@@ -7,6 +7,7 @@ use App\Models\User;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 
+
 class PdfController extends Controller
 {
     public function generatePDF(Request $request, $id)

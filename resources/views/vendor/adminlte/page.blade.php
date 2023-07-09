@@ -13,7 +13,7 @@
 
 @section('body')
     <div class="wrapper">
-
+        
         {{-- Preloader Animation --}}
         @if($layoutHelper->isPreloaderEnabled())
             @include('adminlte::partials.common.preloader')
@@ -54,4 +54,5 @@
 @section('adminlte_js')
     @stack('js')
     @yield('js')
+    
 @stop

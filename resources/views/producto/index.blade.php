@@ -8,6 +8,19 @@
 
 @section('content')
 
+{{-- @if (session('success'))
+    <x-adminlte-alert id="success-alert" theme="success" title="Success">
+        {{ session('success') }}
+    </x-adminlte-alert>
+
+    <script>
+        setTimeout(function(){
+            document.getElementById('success-alert').style.display = 'none';
+        }, 5000); // Cambia 5000 por la duración en milisegundos que deseas (por ejemplo, 5000 para 5 segundos)
+    </script>
+@endif --}}
+
+
     <div class="card">
 
         <div class="card-body">
@@ -63,4 +76,36 @@
             </x-adminlte-datatable>
         </div>
     </div>
+
+
+
+    @if (session('success'))
+    <div id="alert-container">
+        <x-adminlte-alert id="success-alert" theme="success" title="Success">
+            {{ session('success') }}
+        </x-adminlte-alert>
+
+        <script>
+            setTimeout(function(){
+                document.getElementById('success-alert').style.display = 'none';
+            }, 5000); // Cambia 5000 por la duración en milisegundos que deseas (por ejemplo, 5000 para 5 segundos)
+        </script>
+    </div>
+@endif
+
+<style>
+    #alert-container {
+    position: relative;
+    height: 0;
+}
+
+#success-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 20%;
+    z-index: 9999; /* Asegúrate de que el valor sea mayor que cualquier otro elemento de tu página */
+}
+</style>
+
 @stop

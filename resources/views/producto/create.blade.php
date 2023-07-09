@@ -24,8 +24,8 @@
                     <input type="number" name="stock" id="stock" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="categoria">Categoria</label>
-                    <select name="categoria" id="categoria" class="form-control" required>
+                    <label for="id_categoria">Categoria</label>
+                    <select name="id_categoria" id="id_categoria" class="form-control" required>
                         <option value="">---Seleccione una categoria---</option>
                         @foreach ($categorias as $categoria)
                             <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
