@@ -22,4 +22,7 @@ class Historial_Transaccion extends Model
         'id_promocion',
         'id_tramitador',
     ];
+
+
+    
 }
