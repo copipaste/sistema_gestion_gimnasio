@@ -14,11 +14,11 @@ class TarjetaController extends Controller
 
          if($dato != null){
             // return response()->json(['message' => 'Success'], 200)->header('Content-Type', 'text/plain');
-             return response('Hola respuesta', 200)->header('Content-Type', 'text/plain');
+             return response('permitido', 200)->header('Content-Type', 'text/plain');
 
         }else{
             // return response()->json(['message' => 'Error'], 401);
-            return response('Esto es un error', 404)->header('Content-Type', 'text/plain');
+            return response('denegado', 404)->header('Content-Type', 'text/plain');
 
         }
 }
