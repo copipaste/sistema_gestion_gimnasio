@@ -76,7 +76,14 @@ class User extends Authenticatable
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['*']);
+        ->logOnly(['id','nro_carnet','nombre','apellido','fecha_nacimiento','telefono_principal','telefono_emergencia','email','sexo','tipo_sangre','peso','direccion','id_tarjeta','id_rol','id_periodo','id_membresia','descripcion']);
         // Chain fluent methods for configuration options
     }
+
+    public function periodo()
+    {
+        return $this->belongsTo(Periodo::class, 'id_periodo');
+    }
+
+    
 }

@@ -8,8 +8,8 @@
 @section('content')
 
     <div class="card">
-        <div class="card-body"> 
-            <p><strong>numero de carnet:</strong> {{ $historial_transacciones->ci_cliente }}</p>
+        <div class="card-body">  
+            <p><strong>numero de carnet:</strong> {{ $clientes->where('id', $historial_transacciones->id_cliente)->first()->nro_carnet }}</p>
              {{-- <p><strong>nombre cliente:</strong> {{$cliente->where('nro_carnet', $historial_transacciones->ci_cliente)->first()->nombre}}</p> --}}
             <p><strong>monto:</strong> {{ $historial_transacciones->monto }}</p>
             <p><strong>fecha de transaccion:</strong> {{ $historial_transacciones->fecha_transaccion }}</p>

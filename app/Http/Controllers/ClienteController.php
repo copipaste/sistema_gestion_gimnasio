@@ -21,8 +21,6 @@ class ClienteController extends Controller
     public function index()
     {
        
-
-        
         $clientes = User::whereHas('roles', function ($query) {
             $query->where('name', 'cliente');
         })->get();
@@ -140,8 +138,14 @@ class ClienteController extends Controller
 
         $user = User::where('email', $request->email)->first(); 
         $role = Role::find($request->id_rol);
+       
         $user->assignRole($role);
-        return redirect()->route('cliente.index')->with('success','Cliente creado con éxito.');
+        if($role->name == 'cliente'){
+            return redirect()->route('cliente.index')->with('success','Cliente creado con éxito.');
+        }else{
+            return redirect()->route('empleado.index')->with('success','Empleado creado con éxito.');
+        }
+        
     }
 
     /**
@@ -222,5 +226,42 @@ class ClienteController extends Controller
         $cliente = User::find($id);
         $cliente->delete();
         return redirect()->route('cliente.index', $cliente)->with('deleted','Cliente eliminado con éxito');
+    }
+
+    public function mostrarEntreValores(Request $request)
+    {
+     
+        if($request->start == null || $request->end == null){
+            return redirect()->route('cliente.index');
+        }
+        $fechaInicio = $request->input('start');
+        $fechaFin = $request->input('end');
+
+
+        $clientes = User::whereHas('periodo', function ($query) use ($fechaInicio, $fechaFin) {
+            $query->whereBetween('desde', [$fechaInicio, $fechaFin]);
+       
+        })->get();
+
+        
+
+        $periodos = Periodo::all();
+        $membresias = Membresia::all();
+        $tipo_pagos = Tipo_Pago::all();
+        $promociones = Promocion::all();
+        
+
+        $heads = [
+            'numero de carnet',
+            'nombre',
+            'apellido',
+            'email',
+            'inicio de membresia',
+            'fin de membresia',
+            'estado',
+            'membresia',
+             ['label' => 'Acciones', 'no-export' => true],
+        ];
+        return view('cliente.index',compact('clientes','periodos','membresias','heads','tipo_pagos','promociones'));
     }
 }

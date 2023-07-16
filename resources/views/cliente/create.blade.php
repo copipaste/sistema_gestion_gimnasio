@@ -9,8 +9,8 @@
     <div class="col-md-6">
         <form method="POST" action="{{ route('cliente.store') }}" >
             @csrf
-            <div class="form-group" >
-                <label for="nro_carnet">nro_carnet</label>
+            <div class="form-group">
+                <label for="nro_carnet">Numero carnet</label>
                 <input type="number" name="nro_carnet" id="nro_carnet" class="form-control" required>
             </div>
             <div class="form-group">
@@ -70,8 +70,8 @@
                 <input type="password" name="password" id="password" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="id_tarjeta">ID de Tarjeta</label>
-                <input type="text" name="id_tarjeta" id="id_tarjeta" class="form-control" >
+                <label for="id_tarjeta">Contraseña de ingreso</label>
+                <input type="text"  name="id_tarjeta" id="id_tarjeta" class="form-control"  >
             </div>
             <div class="form-group">
                 <label for="id_rol">ID rol</label>
@@ -82,23 +82,17 @@
                 </select>
             </div>
 
-            {{-- <div class="form-group">
-                <label for="id_membresia" >ID membresia</label>
-                <select name="id_membresia" id="id_membresia" class="form-control" >
-                    @foreach ($membresias as $membresia)
-                    <option value="{{$membresia->id}}">{{$membresia->nombre}}</option>
-                    @endforeach
-                    <option value="">Sin membresia</option>
-                </select>
-            </div> --}}
-            {{-- <div class="form-group">
-                <x-adminlte-input name="desde" label="fecha de inicio de la membresia" type="date" placeholder="Fecha de nacimiento">
-                </x-adminlte-input>
-            </div> --}}
-            <div class="form-group">
-                <label for="descripcion">Descripción</label>
-                <input type="text" name="descripcion" id="descripcion" class="form-control">
+            <div class="form-group" >
+                <x-adminlte-textarea name="descripcion" label="Descripción" rows=5 label-class="text-lightblack" 
+                igroup-size="sm">
+                <x-slot name="prependSlot">
+                    <div class="input-group-text bg-dark" >
+                        <i class="fas fa-lg fa-file-alt text-warning"></i>
+                    </div>
+                </x-slot>
+                </x-adminlte-textarea>
             </div>
+
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Crear Cliente</button>
             </div>

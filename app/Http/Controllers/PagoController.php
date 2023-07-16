@@ -45,12 +45,12 @@ class PagoController extends Controller
      */
     public function show(string $id)
     {
-        $cliente = User::all();
+        $clientes = User::all();
 
        
         $historial_transacciones = Historial_Transaccion::findOrFail($id);
        
-         return view('pago.show', compact('cliente','historial_transacciones'));
+         return view('pago.show', compact('clientes','historial_transacciones'));
     }
 
     public function destroy(string $id)
@@ -69,4 +69,44 @@ class PagoController extends Controller
         $historial_transacciones->delete();
         return redirect()->route('pago.index', $historial_transacciones)->with('mensaje','registro eliminado correctamente');
     }
+
+
+
+
+    public function mostrarEntreValores(Request $request)
+    {
+
+        if($request->start == null || $request->end == null){
+            return redirect()->route('pago.index');
+        }
+        $fechaInicio = $request->input('start');
+        $fechaFin = $request->input('end');
+        
+        $tipo_pagos = Tipo_Pago::all();
+        $users = User::all();
+        $historial_transacciones = Historial_Transaccion::whereBetween('fecha_transaccion', [$fechaInicio, $fechaFin])->get();
+
+        //asignar la cabecera de nuestro datatable
+        $heads = [
+            'numero de carnet',
+            'nombre',
+            'monto',
+            'fecha de pago',
+            'tramitador',
+            'membresia adquirida',
+            'tipo de pago',
+             ['label' => 'Acciones', 'no-export' => true],
+        ];
+        return view('pago.index',compact('tipo_pagos','historial_transacciones','heads','users'));
+
+
+
+
+    }
+
+
+
+
+
+
 }

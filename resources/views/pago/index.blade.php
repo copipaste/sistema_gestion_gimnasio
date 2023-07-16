@@ -5,6 +5,34 @@
 @stop
 
 @section('content')
+
+
+@section('plugins.DateRangePicker', true)
+<form method="POST" action="{{ route('mostrar.mostrarEntreValores') }}">
+    @method('GET')
+    @csrf
+    <div class="form-group align-items-end">
+        <div class="input-group">
+            <div class="mr-2">
+                <x-adminlte-input name="start" label="Fecha inicio" type="date" placeholder="Fecha de inicio" label-class="text-lightblue">
+                </x-adminlte-input>
+            </div>
+            <div class="mr-2">
+                <x-adminlte-input name="end" label="Fecha fin" type="date" placeholder="Fecha de fin" label-class="text-lightblue">
+                </x-adminlte-input>
+            </div>
+            <div  style="margin-top: 32px;">
+                
+                <x-adminlte-button class="btn-flat" type="submit" label="Filtrar" theme="dark" icon="fas fa-lg fa-search"/>
+            </div>
+            
+        </div>
+    </div>
+</form>
+
+
+{{-- insertado --}}
+
 <div class="card">
     <div class="card-body">
         <x-adminlte-datatable id="table1" :heads="$heads" striped head-theme="dark" with-buttons>

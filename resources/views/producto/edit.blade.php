@@ -28,6 +28,17 @@
 
                 </x-adminlte-input>
             </div>
+            <div class="row">
+                <div class="col-md-6"> <!-- Añadida la clase col-md-6 -->
+                    <label for="id_categoria">Categoría</label>
+                    <select name="id_categoria" id="id_categoria" class="form-control" required>
+                        <option value="">---Seleccione una categoría---</option>
+                        @foreach ($categorias as $categoria)
+                            <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="form-group col-md-6 mt-2">

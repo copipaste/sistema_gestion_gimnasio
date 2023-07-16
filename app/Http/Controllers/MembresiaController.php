@@ -61,9 +61,11 @@ class MembresiaController extends Controller
        
         
        $selectedDisciplinas = $request->input('sel2Category');
-      
+
+  
         $membresia->disciplinas()->attach($selectedDisciplinas);
-    
+        
+        
 
         
        return redirect()->route('membresia.index', $membresia);

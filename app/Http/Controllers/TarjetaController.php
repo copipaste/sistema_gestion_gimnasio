@@ -10,7 +10,8 @@ class TarjetaController extends Controller
 {
     public function verify(string $id){
        $dato =  DB::table('users')->where('id_tarjeta', $id)->first();
-        
+         
+    //    falta verificar si su membresia esta vencida
 
          if($dato != null){
             // return response()->json(['message' => 'Success'], 200)->header('Content-Type', 'text/plain');

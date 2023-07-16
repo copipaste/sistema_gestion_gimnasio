@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Historial_Transaccion extends Model
 {
-    use HasFactory;
+    use HasFactory,LogsActivity;
     protected $table = 'historial_transaccions';
 
     protected $fillable = [
@@ -22,6 +24,13 @@ class Historial_Transaccion extends Model
         'id_promocion',
         'id_tramitador',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['*']);
+        // Chain fluent methods for configuration options
+    }
 
 
     

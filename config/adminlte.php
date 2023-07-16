@@ -518,6 +518,21 @@ return [
                 ],
             ]
         ],
+        [
+            'text'       => 'Bitacora',
+            'icon'       => 'fas fa-id-card-alt',
+            'can'   =>  'admin-access',
+            'submenu'    => [
+                [
+                    'text' => 'ver Bitacora',
+                    'icon'       => 'fas fa-list',
+                    'route'  => 'bitacora.index',
+                    'can'   =>  'admin-access'
+                ],
+
+
+            ]
+        ],
 
 
 
@@ -722,6 +737,26 @@ return [
                     'type' => 'css',
                     'asset' => true,
                     'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
+                ],
+            ],
+        ],
+        'DateRangePicker' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/daterangepicker/daterangepicker.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/daterangepicker/daterangepicker.css',
                 ],
             ],
         ],

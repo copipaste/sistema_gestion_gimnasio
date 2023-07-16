@@ -7,6 +7,8 @@ use App\Models\Empleado;
 use App\Models\Especialidad;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class EmpleadoController extends Controller
 {
@@ -77,10 +79,11 @@ class EmpleadoController extends Controller
      */
     public function show(string $id)
     {
-        $empleado = empleado::findOrFail($id);
-
+        $empleado = User::findOrFail($id);
+        $roles = Role::all();
+        
         // Pasar los datos del empleado a la vista
-        return view('empleado.show', compact('empleado'));
+        return view('empleado.show', compact('empleado','roles'));
     }
 
     /**
@@ -96,25 +99,48 @@ class EmpleadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Empleado $empleado)
+    public function update(Request $request, string $id)
     {
         request()->validate([
             
+            'nro_carnet' => 'required',
             'nombre' => 'required',
             'apellido' => 'required',
-            'cedula' => 'required',
-            'telefono' => 'required',
+            'fecha_nacimiento' => 'required',
+            'telefono_principal' => 'required',
+            'telefono_emergencia' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'sexo' => 'required',
+            'tipo_sangre' => 'required',
+            'peso' => 'required',
             'direccion' => 'required',
-            'email' => 'required',
-            'especialidad_id' => 'required',
-            'fecha_ingreso' => 'required'
+            'password' => 'required',
+            'id_tarjeta' => 'required',
+            'descripcion' => 'required',
 
         ]); //validacion de los campos osea que tienen que tener algun valor 
 
-        $empleado -> update($request->all());
+        $empleado = User::find($id);
+        $empleado->nro_carnet = $request->nro_carnet;
+        $empleado->nombre = $request->nombre;
+        $empleado->apellido = $request->apellido;
+        $empleado->fecha_nacimiento = $request->fecha_nacimiento;
+        $empleado->telefono_principal = $request->telefono_principal;
+        $empleado->telefono_emergencia = $request->telefono_emergencia;
+        $empleado->email = $request->email;
+        $empleado->sexo = $request->sexo;
+        $empleado->tipo_sangre = $request->tipo_sangre;
+        $empleado->peso = $request->peso;
+        $empleado->direccion = $request->direccion;
+        $empleado->password = Hash::make($request->password);
+        $empleado->id_tarjeta = $request->id_tarjeta;
+        $empleado->descripcion = $request->descripcion;
+        $empleado -> update();
         
     
        return redirect()->route('empleado.index', $empleado)->with('mensaje','registro editado correctamente');
+
+
        //aqui puse que redirija al index pero al hacer eso no muestra el mensaje de que se edito correctamente   
     }
 
@@ -125,6 +151,6 @@ class EmpleadoController extends Controller
     {
         $empleado = User::find($id);
         $empleado->delete();
-        return redirect()->route('empleado.index', $empleado)->with('mensaje','registro eliminado correctamente');  
+        return redirect()->route('empleado.index', $empleado)->with('success','entrenador eliminado correctamente');  
     }
 }

@@ -26,14 +26,17 @@ class VentaController extends Controller
     {
         $users = User::all();
         $ventas = Venta::all();
+        $detalle_ventas = Detalle_Venta::all();
+        $productos = Producto::all();
         $heads = [
+            'id',
             'fecha',
             'total',
             'id_administrador',
             ['label' => 'Actions', 'no-export' => true],
         ];
 
-        return view('venta.index', compact('heads', 'ventas', 'users'));
+        return view('venta.index', compact('heads', 'ventas', 'users', 'detalle_ventas', 'productos'));
     }
 
     /** page create estimates */
@@ -94,7 +97,6 @@ class VentaController extends Controller
             $estimatesAdd['precio'] = $request->unit_price[$key];
             Detalle_Venta::create($estimatesAdd);
         
-            
             }
 
              DB::commit();
@@ -346,6 +348,14 @@ class VentaController extends Controller
 
         // return view('sales.expenses',compact('data'));
     }
+
+    public function destroy(string $id)
+    {
+        $venta = Venta::find($id);
+        $venta->delete();
+        return redirect()->route('form/estimates/page')->with('success', 'Producto eliminado exitosamente.');
+    }
+
 
 
 }

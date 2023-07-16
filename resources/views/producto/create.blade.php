@@ -34,6 +34,7 @@
                 </div>
                 <div class="form-group">
                     <x-adminlte-button class="btn-flat" type="submit" label="Guardar" theme="success" />
+                    <a href="{{ route('producto.index') }}" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>

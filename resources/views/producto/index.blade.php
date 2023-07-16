@@ -19,7 +19,14 @@
         }, 5000); // Cambia 5000 por la duración en milisegundos que deseas (por ejemplo, 5000 para 5 segundos)
     </script>
 @endif --}}
+<div class="form-group align-items-end">
 
+    <div class="btn btn-lg btn-default">
+        <a href="{{ route('producto.create') }}" class="text-primary">
+            <i class="fa fa-lg fa-fw fa-plus"></i>
+            Nuevo Producto</a>
+    </div>
+</div>
 
     <div class="card">
 
@@ -27,11 +34,7 @@
 
             <x-adminlte-datatable id="table1" :heads="$heads" striped head-theme="dark" with-buttons>
 
-                <div class="btn btn-lg btn-default">
-                    <a href="{{ route('producto.create') }}" class="text-primary">
-                        <i class="fa fa-lg fa-fw fa-plus"></i>
-                        Nuevo Producto</a>
-                </div>
+
 
                 @foreach ($productos as $producto)
                     <tr>

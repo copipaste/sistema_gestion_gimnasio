@@ -70,7 +70,8 @@ class ProductoController extends Controller
     public function edit(string $id)
     {
         $producto = Producto::find($id);
-        return view('producto.edit', compact('producto'));
+        $categorias = Categoria::all();
+        return view('producto.edit', compact('producto', 'categorias'));
     }
 
     /**

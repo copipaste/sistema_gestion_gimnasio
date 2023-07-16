@@ -7,6 +7,13 @@
 @stop
 
 @section('content')
+<div class="form-group align-items-end">
+
+    <button class="btn btn-lg btn-default text-primary" data-toggle="modal" data-target="#modalCreateCategoria">
+        <i class="fa fa-lg fa-fw fa-plus"></i>
+        Crear Categoría
+    </button>
+</div>
 
     <div class="card">
 
@@ -14,10 +21,6 @@
 
             <x-adminlte-datatable id="table1" :heads="$heads" striped head-theme="dark" with-buttons>
 
-                <button class="btn btn-lg btn-default text-primary" data-toggle="modal" data-target="#modalCreateCategoria">
-                    <i class="fa fa-lg fa-fw fa-plus"></i>
-                    Crear Categoría
-                </button>
                 {{-- ESTO ES EL MODAL PARA CREAR CATEGORIA --}}
                 <x-adminlte-modal id="modalCreateCategoria" title="Crear Nueva Categoria" size="lg" theme="dark"
                     icon="" v-centered static-backdrop scrollable>
@@ -47,6 +50,7 @@
                 @foreach ($categorias as $categoria)
                     <tr>
                         <td>{{ $categoria->nombre }}</td>
+
 
                         <td width="15px"> {{-- esto es como una columna mas  --}}
                             <div class="d-flex"> {{-- esto es lo que hace que los datos esten uno al lado del otro --}}
