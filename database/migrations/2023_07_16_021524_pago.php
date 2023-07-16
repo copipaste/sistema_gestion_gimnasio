@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Tipo_Pago;
+use App\Models\Tipo_pago;
 
 return new class extends Migration
 {
@@ -24,6 +24,3 @@ return new class extends Migration
         Schema::dropIfExists('tipo_pago');
     }
 };
-
-
-
