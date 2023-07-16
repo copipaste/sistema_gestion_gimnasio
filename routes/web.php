@@ -47,17 +47,17 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');                                                    
 //agregamos un middleware para que solo los usuarios con rol de admin puedan acceder a la ruta de editar,eliminar,crear etc de sauna con "->middleware('can:admin-access');"
-Route::resource('/sauna', SaunaController::class)->names('sauna')->middleware('auth')->middleware('can:admin-access');
-Route::resource('/empleado', EmpleadoController::class)->names('empleado')->middleware('auth')->middleware('can:admin-access');
-Route::resource('/cliente', ClienteController::class)->names('cliente')->middleware('auth')->middleware('can:admin-access');
-Route::resource('/disciplina', DisciplinaController::class)->names('disciplina')->middleware('auth')->middleware('can:admin-access');
-Route::resource('/horario_disciplina',Horario_disciplinaController::class)->names('horario_disciplina')->middleware('auth')->middleware('can:admin-access');
-Route::resource('/membresia',MembresiaController::class)->names('membresia')->middleware('auth')->middleware('can:admin-access');
-Route::resource('/pago',PagoController::class)->names('pago')->middleware('auth')->middleware('can:admin-access');
-Route::resource('/promocion',PromocionController::class)->names('promocion')->middleware('auth')->middleware('can:admin-access');
-Route::resource('/producto', ProductoController::class)->names('producto')->middleware('auth')->middleware('can:admin-access');
-Route::resource('/categoria', CategoriaController::class)->names('categoria')->middleware('auth')->middleware('can:admin-access');
-Route::resource('/bitacora', BitacoraController::class)->names('bitacora')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/sauna', SaunaController::class)->names('sauna')->middleware('auth');
+Route::resource('/empleado', EmpleadoController::class)->names('empleado')->middleware('auth');
+Route::resource('/cliente', ClienteController::class)->names('cliente')->middleware('auth');
+Route::resource('/disciplina', DisciplinaController::class)->names('disciplina')->middleware('auth');
+Route::resource('/horario_disciplina',Horario_disciplinaController::class)->names('horario_disciplina')->middleware('auth');
+Route::resource('/membresia',MembresiaController::class)->names('membresia')->middleware('auth');
+Route::resource('/pago',PagoController::class)->names('pago')->middleware('auth');
+Route::resource('/promocion',PromocionController::class)->names('promocion')->middleware('auth');
+Route::resource('/producto', ProductoController::class)->names('producto')->middleware('auth');
+Route::resource('/categoria', CategoriaController::class)->names('categoria')->middleware('auth');
+Route::resource('/bitacora', BitacoraController::class)->names('bitacora')->middleware('auth');
 //Route::resource('/venta', VentaController::class)->names('venta')->middleware('auth')->middleware('can:admin-access');
 //Route::post('/venta', [VentaController::class, 'store'])->name('venta.store')->middleware('auth')->middleware('can:admin-access');
 //Route::get('/venta/create', [VentaController::class, 'create'])->name('venta.create')->middleware('auth')->middleware('can:admin-access');
@@ -71,11 +71,11 @@ Route::get('/change-password', function() {
 
 Route::put('/usuarios/{id}/update-password', [PassController::class, 'updatePassword'])->name('usuarios.update-password')->middleware('auth');
 
-Route::put('/periodo/{id}', [PeriodoController::class, 'update'])->name('periodo.update')->middleware('auth')->middleware('can:admin-access');
+Route::put('/periodo/{id}', [PeriodoController::class, 'update'])->name('periodo.update')->middleware('auth');
 
 
 
-Route::get('/pdf/{id}', [PdfController::class, 'generatePDF'])->name('pdf.generate')->middleware('auth')->middleware('can:admin-access');
+Route::get('/pdf/{id}', [PdfController::class, 'generatePDF'])->name('pdf.generate')->middleware('auth');
 //Route::get('/pdf/{id}/imprimirNotaConDatos', [PdfController::class, 'imprimirNotaConDatos'])->name('pdf.datos')->middleware('auth');
 
 
@@ -94,14 +94,14 @@ Route::get('/mostrar2',[PagoController::class, 'mostrarEntreValores'])->name('mo
 
 Route::controller(VentaController::class)->group(function () {
 
-    Route::delete('estimate/{id}', 'destroy')->name('estimate.destroy')->middleware('auth')->middleware('can:admin-access');
+    Route::delete('estimate/{id}', 'destroy')->name('estimate.destroy')->middleware('auth');
    //este muestra la vista para crear la venta
-    Route::get('form/estimates/page', 'estimatesIndex')->middleware('auth')->name('form/estimates/page')->middleware('can:admin-access');
+    Route::get('form/estimates/page', 'estimatesIndex')->middleware('auth')->name('form/estimates/page');
     Route::get('create/estimate/page', 'createEstimateIndex')->middleware('auth')->name('create/estimate/page');
     // Route::get('edit/estimate/{estimate_number}', 'editEstimateIndex')->middleware('auth');
     // Route::get('estimate/view/{estimate_number}', 'viewEstimateIndex')->middleware('auth');
     
-    Route::post('create/estimate/save', 'createEstimateSaveRecord')->middleware('auth')->name('create/estimate/save')->middleware('can:admin-access');
+    Route::post('create/estimate/save', 'createEstimateSaveRecord')->middleware('auth')->name('create/estimate/save');
     // Route::post('create/estimate/update', 'EstimateUpdateRecord')->middleware('auth')->name('create/estimate/update');
     // Route::post('estimate_add/delete', 'EstimateAddDeleteRecord')->middleware('auth')->name('estimate_add/delete');
     // Route::post('estimate/delete', 'EstimateDeleteRecord')->middleware('auth')->name('estimate/delete');
