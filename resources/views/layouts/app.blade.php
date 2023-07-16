@@ -19,7 +19,26 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     {{-- esto aumente --}}
-    <script src="{{ asset('vendor/jquery/jquery.js') }}"></script>
+
+
+
+
+
+
+
+
+
+
+    {{-- <script src="{{ asset('vendor/jquery/jquery.js') }}"></script> --}}
+
+
+
+
+
+
+
+
+
     {{-- esto aumente --}}
 </head>
 <body>
