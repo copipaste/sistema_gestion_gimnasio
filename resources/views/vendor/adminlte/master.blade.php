@@ -31,7 +31,7 @@
        
        
         {{-- esto aumente --}}
-        <link rel="stylesheet" href="{{ asset('vendor/jquery/jquery.js') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('vendor/jquery/jquery.js') }}"> --}}
         {{-- esto aumente --}}
         
 

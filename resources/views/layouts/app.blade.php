@@ -22,21 +22,7 @@
 
 
 
-
-
-
-
-
-
-
     {{-- <script src="{{ asset('vendor/jquery/jquery.js') }}"></script> --}}
-
-
-
-
-
-
-
 
 
     {{-- esto aumente --}}

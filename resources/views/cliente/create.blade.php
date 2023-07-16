@@ -80,7 +80,7 @@
                     <option value="{{$role->id}}">{{$role->name}}</option>
                     @endforeach
                 </select>
-            </div>
+            </div>  
 
             <div class="form-group" >
                 <x-adminlte-textarea name="descripcion" label="Descripción" rows=5 label-class="text-lightblack" 
