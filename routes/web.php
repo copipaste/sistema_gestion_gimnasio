@@ -98,13 +98,13 @@ Route::controller(VentaController::class)->group(function () {
    //este muestra la vista para crear la venta
     Route::get('form/estimates/page', 'estimatesIndex')->middleware('auth')->name('form/estimates/page')->middleware('can:admin-access');
     Route::get('create/estimate/page', 'createEstimateIndex')->middleware('auth')->name('create/estimate/page');
-    Route::get('edit/estimate/{estimate_number}', 'editEstimateIndex')->middleware('auth');
-    Route::get('estimate/view/{estimate_number}', 'viewEstimateIndex')->middleware('auth');
+    // Route::get('edit/estimate/{estimate_number}', 'editEstimateIndex')->middleware('auth');
+    // Route::get('estimate/view/{estimate_number}', 'viewEstimateIndex')->middleware('auth');
     
     Route::post('create/estimate/save', 'createEstimateSaveRecord')->middleware('auth')->name('create/estimate/save')->middleware('can:admin-access');
-    Route::post('create/estimate/update', 'EstimateUpdateRecord')->middleware('auth')->name('create/estimate/update');
-    Route::post('estimate_add/delete', 'EstimateAddDeleteRecord')->middleware('auth')->name('estimate_add/delete');
-    Route::post('estimate/delete', 'EstimateDeleteRecord')->middleware('auth')->name('estimate/delete');
+    // Route::post('create/estimate/update', 'EstimateUpdateRecord')->middleware('auth')->name('create/estimate/update');
+    // Route::post('estimate_add/delete', 'EstimateAddDeleteRecord')->middleware('auth')->name('estimate_add/delete');
+    // Route::post('estimate/delete', 'EstimateDeleteRecord')->middleware('auth')->name('estimate/delete');
     // ---------------------- payments  ---------------//
 
     

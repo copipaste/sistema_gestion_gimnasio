@@ -358,7 +358,7 @@ return [
                     'text' => 'Clientes',   
                   'route'  =>  'cliente.index',
                     'icon' => 'fas fa-users',
-                    'can'   =>  'admin-access'
+                    'can'   =>  'admin-access',
                     
                 ],
                 [
@@ -370,7 +370,7 @@ return [
                             'text' => 'Lista de Entrenadores',
                             'icon'       => 'fas fa-list',
                             'route'  => 'empleado.index',
-                            'can'   =>  'admin-access'
+                            'can'   =>  'admin-access',
                         ],
         
                     ]
@@ -385,13 +385,13 @@ return [
                             'text' => 'Lista de membresias',
                             'icon'       => 'fas fa-list',
                             'route'  => 'membresia.index',
-                            'can'   =>  'admin-access'
+                            'can'   =>  'admin-access',
                         ],
                         [
                             'text' => 'Crear membresia',
                             'icon'       => 'fas fa-list',
                             'route'  => 'membresia.create',
-                            'can'   =>  'admin-access'
+                            'can'   =>  'admin-access',
                         ],
         
                     ]
@@ -406,13 +406,13 @@ return [
                             'text' => 'Lista de Disciplinas',
                             'icon'       => 'fas fa-list',
                             'route'  => 'disciplina.index',
-                            'can'   =>  'admin-access'
+                            'can'   =>  'admin-access',
                         ],
                         [
                             'text' => 'Registrar Disciplina',
                             'icon'       => 'fas fa-user-plus',
                             'route'  =>  'disciplina.create',
-                            'can'   =>  'admin-access'
+                            'can'   =>  'admin-access',
                         ],
                     ]
                 ],
@@ -426,13 +426,13 @@ return [
                             'text' => 'Lista de Horarios',
                             'icon'       => 'fas fa-list',
                             'route'  => 'horario_disciplina.index',
-                            'can'   =>  'admin-access'
+                            'can'   =>  'admin-access',
                         ],
                         [
                             'text' => 'crear horario',
                             'icon'       => 'fas fa-list',
                             'route'  => 'horario_disciplina.create',
-                            'can'   =>  'admin-access'
+                            'can'   =>  'admin-access',
                         ],
         
                     ]
@@ -471,13 +471,13 @@ return [
                             'text' => 'Lista de Promociones',
                             'icon'       => 'fas fa-list',
                             'route'  => 'promocion.index',
-                            'can'   =>  'admin-access'
+                            'can'   =>  'admin-access',
                         ],
                         [
                             'text' => 'Crear promocion',
                             'icon'       => 'fas fa-list',
                             'route'  => 'promocion.create',
-                            'can'  => 'admin-access'
+                            'can'  => 'admin-access',
                         ],
         
                     ]
@@ -510,7 +510,7 @@ return [
                             'text' => 'pagos',
                             'icon'       => 'fas fa-list',
                             'route'  => 'pago.index',
-                            'can'   =>  'admin-access'
+                            'can'   =>  'admin-access',
                         ],
         
         
@@ -527,7 +527,7 @@ return [
                     'text' => 'ver Bitacora',
                     'icon'       => 'fas fa-list',
                     'route'  => 'bitacora.index',
-                    'can'   =>  'admin-access'
+                    'can'   =>  'admin-access',
                 ],
 
 
@@ -740,26 +740,7 @@ return [
                 ],
             ],
         ],
-        'DateRangePicker' => [
-            'active' => false,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/moment/moment.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/daterangepicker/daterangepicker.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => true,
-                    'location' => 'vendor/daterangepicker/daterangepicker.css',
-                ],
-            ],
-        ],
+
         
     ],
 
