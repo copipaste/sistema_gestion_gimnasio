@@ -37,11 +37,11 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', function() {
     return view('home');
