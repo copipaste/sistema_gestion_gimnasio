@@ -100,19 +100,25 @@ class VentaController extends Controller
             // $Ventas->id_administrador  = Auth::user()->id;
             // $Ventas->save();
          
-
+            foreach($request->producto as $key => $productos) {
+                Detalle_Venta::create([
+                    'id_venta' => $Vent->id,
+                    'id_producto' => $productos,
+                    'cantidad' => $request->qty[$key],
+                    'precio' => $request->unit_price[$key],
+                ]);    
+            }
     
  
 
-           foreach($request->producto as $key => $productos) {
-            $estimatesAdd['id_venta'] = $Vent->id;
-            $estimatesAdd['id_producto'] = $productos;
-            $estimatesAdd['cantidad'] = $request->qty[$key];
-            $estimatesAdd['precio'] = $request->unit_price[$key];
-            Detalle_Venta::create($estimatesAdd);
+        //    foreach($request->producto as $key => $productos) {
+        //     $estimatesAdd['id_venta'] = $Vent->id;
+        //     $estimatesAdd['id_producto'] = $productos;
+        //     $estimatesAdd['cantidad'] = $request->qty[$key];
+        //     $estimatesAdd['precio'] = $request->unit_price[$key];
+        //     Detalle_Venta::create($estimatesAdd);
             
-
-            }
+        //     }
 
               DB::commit();
       
