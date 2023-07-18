@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Disciplina;
+use App\Models\User;
+use App\Models\Instructor_Disciplina;
 
 class DisciplinaController extends Controller
 {
@@ -15,18 +17,22 @@ class DisciplinaController extends Controller
 
 
         $disciplinas = Disciplina::all();
+        $InstructorDisciplinas = Instructor_Disciplina::all();
+
+        $entrenadores = User::where('id_rol', '3')->get();
         //asignar la cabecera de nuestro datatable
         $heads = [
        
             'nombre',
             'capacidad',
+            'Instructor',
             
-            ['label' => 'Actions', 'no-export' => true],
+            ['label' => 'Acciones', 'no-export' => true],
             // ['label' => 'Actions', 'no-export' => true],
 
 
         ];
-        return view('disciplina.index',compact('heads','disciplinas'));
+        return view('disciplina.index',compact('heads','disciplinas','entrenadores'));
     }
 
     /**
@@ -104,4 +110,20 @@ class DisciplinaController extends Controller
         $disciplina->delete();
         return redirect()->route('disciplina.index', $disciplina); 
     }
+
+
+    public function asignarEntrenador(Request $request, string $id)
+    {
+        request()->validate([
+            'id_instructor' => 'required',
+        ]); //validacion de los campos osea que tienen que tener algun valor 
+        Instructor_Disciplina::create([
+            'id_instructor' => $request->id_instructor,
+            'id_disciplina' => $id,
+        ]);
+    
+
+       return redirect()->route('disciplina.index')
+            ->with('success', 'Entrenador asignado exitosamente.');
+        }
 }

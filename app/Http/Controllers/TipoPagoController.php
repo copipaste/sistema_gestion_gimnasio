@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tipo_Pago;
 use Illuminate\Http\Request;
-use App\Models\Categoria;
-use Illuminate\Support\Facades\Redirect;
 
-class CategoriaController extends Controller
+class TipoPagoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categorias = Categoria::all();
+        $tipo_pagos = Tipo_Pago::all();
         $heads = [
             'nombre',
-            ['label' => 'Acciones', 'no-export' => true],
+            ['label' => 'Actions', 'no-export' => true],
         ];
-        return view('categoria.index', compact('heads', 'categorias'));
+        return view('tipo_pago.index', compact('heads', 'tipo_pagos'));
     }
 
     /**
@@ -26,7 +25,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('categoria.create');
+        return view('tipo_pago.create');
     }
 
     /**
@@ -38,11 +37,11 @@ class CategoriaController extends Controller
             'nombre' => 'required',
         ]);
 
-        Categoria::create([
+        Tipo_Pago::create([
             'nombre' => $request->nombre,
         ]);
 
-        return redirect()->route('categoria.index')->with('success', 'Categoria creada exitosamente.');
+        return redirect()->route('tipo_pago.index')->with('success', 'tipo de pago creada exitosamente.');
     }
 
     /**
@@ -58,8 +57,7 @@ class CategoriaController extends Controller
      */
     public function edit(string $id)
     {
-        $categoria = Categoria::findOrFail($id);
-        return view('categoria.edit', compact('categoria'));
+        //
     }
 
     /**
@@ -67,16 +65,7 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        request()->validate([
-            'nombre' => 'required',
-        ]);
-
-        $categoria = Categoria::findOrFail($id);
-        $categoria->update([
-            'nombre' => $request->nombre,
-        ]);
-
-        return redirect()->route('categoria.index')->with('success', 'Categoria actualizada exitosamente.');
+        //
     }
 
     /**
@@ -84,9 +73,9 @@ class CategoriaController extends Controller
      */
     public function destroy(string $id)
     {
-        $categoria = Categoria::findOrFail($id);
-        $categoria->delete();
+        $tipo_pago = Tipo_pago::findOrFail($id);
+        $tipo_pago->delete();
 
-        return redirect()->route('categoria.index')->with('success', 'Categoria eliminada exitosamente.');
+        return redirect()->route('tipo_pago.index')->with('success', 'tipo de pago eliminada exitosamente.');
     }
 }

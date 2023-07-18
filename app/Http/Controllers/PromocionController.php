@@ -20,7 +20,7 @@ class PromocionController extends Controller
             'dias de regalo',
             'porcentaje de descuento',
             'descripcion',
-            ['label' => 'Actions', 'no-export' => true],
+            ['label' => 'Acciones', 'no-export' => true],
 
         ];
         return view('promocion.index',compact('heads','promociones'));

@@ -21,6 +21,7 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\TarjetaController;
 use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\TipoPagoController;
 
 
 /*
@@ -44,9 +45,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');                                                    
+// Route::get('/home', function() {
+//     return view('home');
+// })->name('home')->middleware('auth');                                                    
 //agregamos un middleware para que solo los usuarios con rol de admin puedan acceder a la ruta de editar,eliminar,crear etc de sauna con "->middleware('can:admin-access');"
 Route::resource('/sauna', SaunaController::class)->names('sauna')->middleware('auth')->middleware('can:admin-access');
 Route::resource('/empleado', EmpleadoController::class)->names('empleado')->middleware('auth')->middleware('can:admin-access');
@@ -59,6 +60,7 @@ Route::resource('/promocion',PromocionController::class)->names('promocion')->mi
 Route::resource('/producto', ProductoController::class)->names('producto')->middleware('auth')->middleware('can:admin-access');
 Route::resource('/categoria', CategoriaController::class)->names('categoria')->middleware('auth')->middleware('can:admin-access');
 Route::resource('/bitacora', BitacoraController::class)->names('bitacora')->middleware('auth')->middleware('can:admin-access');
+Route::resource('/tipo_pago', TipoPagoController::class)->names('tipo_pago')->middleware('auth')->middleware('can:admin-access');
 //Route::resource('/venta', VentaController::class)->names('venta')->middleware('auth')->middleware('can:admin-access');
 //Route::post('/venta', [VentaController::class, 'store'])->name('venta.store')->middleware('auth')->middleware('can:admin-access');
 //Route::get('/venta/create', [VentaController::class, 'create'])->name('venta.create')->middleware('auth')->middleware('can:admin-access');
@@ -74,7 +76,7 @@ Route::put('/usuarios/{id}/update-password', [PassController::class, 'updatePass
 
 Route::put('/periodo/{id}', [PeriodoController::class, 'update'])->name('periodo.update')->middleware('auth')->middleware('can:admin-access');
 
-
+Route::put('/AsignarEntrenador/{id}', [DisciplinaController::class, 'asignarEntrenador'])->name('disciplina.asignarEntrenador')->middleware('auth')->middleware('can:admin-access');
 
 Route::get('/pdf/{id}', [PdfController::class, 'generatePDF'])->name('pdf.generate')->middleware('auth')->middleware('can:admin-access');
 //Route::get('/pdf/{id}/imprimirNotaConDatos', [PdfController::class, 'imprimirNotaConDatos'])->name('pdf.datos')->middleware('auth');
@@ -84,6 +86,10 @@ Route::get('/perfil', [PerfilController::class, 'show'])->name('perfil.show')->m
 
 Route::get('/mostrar',[ClienteController::class, 'mostrarEntreValores'])->name('mostrar.mostrarEntreValores')->middleware('auth');
 Route::get('/mostrar2',[PagoController::class, 'mostrarEntreValores'])->name('mostrar.mostrarEntreValores')->middleware('auth');
+
+
+
+Route::get('/datos', [EmpleadoController::class,'datos'])->name('datos')->middleware('auth')->middleware('can:entrenador-access');
 
 /**
  * Rutas para crear un nuevo registro de venta

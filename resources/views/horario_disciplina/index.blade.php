@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Disciplinas</h1>
+    <h1 class="m-0 text-dark">Horario Disciplinas</h1>
 @stop
 
 @section('content')

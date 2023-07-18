@@ -18,7 +18,7 @@ class SaunaController extends Controller
         'id',
         'Monto',
         'Fecha',
-        ['label' => 'Actions', 'no-export' => true],    //para que esta parte no se exporte en el PDF
+        ['label' => 'Acciones', 'no-export' => true],    //para que esta parte no se exporte en el PDF
       //  ['label' => 'Actions', 'no-export' => true],    //para que esta parte no se exporte en el PDF
         
     ];

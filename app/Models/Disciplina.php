@@ -21,6 +21,7 @@ class Disciplina extends Model
     {
         return $this->belongsToMany(Membresia::class, 'englobas', 'Id_disciplina', 'Id_membresia');
     }
+
     public function horario_disciplinas()
     {
         return $this->hasMany(Horario_disciplina::class, 'id_disciplina', 'id');
@@ -32,4 +33,16 @@ class Disciplina extends Model
         ->logOnly(['*']);
         // Chain fluent methods for configuration options
     }
+
+
+///////////////////esto meti recien
+
+    public function entrenadores()
+    {
+        return $this->belongsToMany(User::class, 'instructor_disciplinas', 'id_disciplina', 'id_instructor');
+    }
+
+
+
+
 }

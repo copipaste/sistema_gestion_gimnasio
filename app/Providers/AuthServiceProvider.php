@@ -31,5 +31,16 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRole('admin');
             
         });
+// esto aumente para que el entrenador pueda acceder a las rutas de entrenador
+        Gate::define('entrenador-access', function ($user) {
+           
+            return $user->hasRole('entrenador');
+            
+        });
+
+        // esto aumente para que el entrenador pue
     }
+
+
+
 }

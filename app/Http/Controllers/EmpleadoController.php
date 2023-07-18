@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Disciplina;
 use Illuminate\Http\Request;
 use App\Models\Empleado;
 use App\Models\Especialidad;
@@ -9,6 +10,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Horario_disciplina;
 
 class EmpleadoController extends Controller
 {
@@ -34,7 +37,7 @@ class EmpleadoController extends Controller
             'telefono',
             'direccion',
         //   'especialidad',
-            ['label' => 'Actions', 'no-export' => true],
+            ['label' => 'Acciones', 'no-export' => true],
         ];
         return view('empleado.index',compact('empleados','heads'));
 
@@ -44,9 +47,34 @@ class EmpleadoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function datos()
     {
-        return view('empleado.create');
+        $entrenador = Auth::user();
+        
+        
+        $horario_disciplinas = Horario_disciplina::all();
+
+
+
+        $todasLasDisciplinas = $entrenador->disciplinas;
+        $disciplinas = Disciplina::all();
+
+
+        foreach ($todasLasDisciplinas as $disciplina) {
+            $estudiantes = User::join('membresias', 'users.id_membresia', '=', 'membresias.id')
+            ->join('englobas', 'membresias.id', '=', 'englobas.id_membresia')
+            ->join('disciplinas', 'englobas.id_disciplina', '=', 'disciplinas.id')
+            ->where('disciplinas.id', '=', $disciplina->id)
+            ->select('users.nombre','users.apellido','users.telefono_principal','users.email')
+            ->get();
+            $DisciplinasConEstudiantes[$disciplina->id] = $estudiantes;
+           
+        }
+
+
+
+        
+        return view('empleado.datos',compact('entrenador','horario_disciplinas','DisciplinasConEstudiantes','disciplinas'));
     }
 
     /**

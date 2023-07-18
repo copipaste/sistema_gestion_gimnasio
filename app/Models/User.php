@@ -85,5 +85,11 @@ class User extends Authenticatable
         return $this->belongsTo(Periodo::class, 'id_periodo');
     }
 
+//esto meti recien 
+    public function disciplinas()
+    {
+        return $this->belongsToMany(Disciplina::class, 'instructor_disciplinas', 'id_instructor', 'id_disciplina');
+    }
+
     
 }

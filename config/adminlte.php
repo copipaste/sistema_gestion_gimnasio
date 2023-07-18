@@ -310,6 +310,12 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        [
+            'text' => 'Dashboard',
+            'route'  => 'home',
+            'icon' => 'fas fa-fw fa-home',
+            'can'   =>  'admin-access',
+        ],
         // [
         //     'text'        => 'pages',
         //     'url'         => 'admin/pages',
@@ -317,16 +323,25 @@ return [
         //     'label'       => 4,
         //     'label_color' => 'success',
         // ],
-        ['header' => 'CONFIGURACION DE CUENTA'],
+        ['header' => 'PAQUETES'],
 
         [
             'text'       => 'Gestionar Usuario',    //PAQUE GESTIONAR USUARIO
             'icon'       => 'fas fa-folder',
+            'can'   =>  'admin-access',
             'submenu'    => [
                 [
                     'text' => 'registrar usuario',
                     'route'  => 'cliente.create',
                     'icon' => 'fas fa-user-plus',
+                    'can'   =>  'admin-access',
+                ],
+
+
+                [
+                    'text'       => 'Bitacora',
+                    'icon'       => 'fas fa-history',
+                    'route'  => 'bitacora.index',
                     'can'   =>  'admin-access',
                 ],
             ]
@@ -335,6 +350,7 @@ return [
         [
             'text'       => 'Gestionar Perfil', //PAQUETE GESTIONAR PERFIL
             'icon'       => 'fas fa-folder',
+            
             'submenu'    => [
                 [
                     'text' => 'profile',
@@ -347,12 +363,19 @@ return [
                   'route'  =>  'change-password',
                     'icon' => 'fas fa-fw fa-lock',
                 ],
+                [
+                    'text' => 'Informacion Clase',
+                  'route'  =>  'datos',
+                    'icon' => 'fas fa-fw fa-lock',
+                    'can'   =>  'entrenador-access',
+                ],
             ]
         ],
 
         [
             'text'       => 'Gestionar Servicio',  //PAQUE GESTIONAR SERVICIO
             'icon'       => 'fas fa-folder',
+            'can'   =>  'admin-access',
             'submenu'    => [
                 [
                     'text' => 'Clientes',   
@@ -456,7 +479,7 @@ return [
                          ],
                          [
                             'text' => 'Venta de Productos',
-                            'icon'       => 'fas fa-list-ol',
+                            'icon'       => 'fas fa-shopping-cart',
                             'route'  => 'form/estimates/page',
                             'can'   =>  'admin-access',
                          ],
@@ -490,6 +513,7 @@ return [
         [
             'text'       => 'Gestionar Venta',  //PAQUE GESTIONAR VENTAS
             'icon'       => 'fas fa-folder',
+            'can'   =>  'admin-access',
             'submenu'    => [
                 // [
                 //     'text' => 'Lista de Disciplinas',
@@ -503,36 +527,20 @@ return [
                 // ],
                 [
                     'text'       => 'Historial de pagos',
-                    'icon'       => 'fas fa-id-card-alt',
+                    'icon'       => 'fas fa-search-dollar',
+                    'route'  => 'pago.index',
                     'can'   =>  'admin-access',
-                    'submenu'    => [
-                        [
-                            'text' => 'pagos',
-                            'icon'       => 'fas fa-list',
-                            'route'  => 'pago.index',
-                            'can'   =>  'admin-access',
-                        ],
-        
-        
-                    ]
+ 
                 ],
-            ]
-        ],
-        [
-            'text'       => 'Bitacora',
-            'icon'       => 'fas fa-id-card-alt',
-            'can'   =>  'admin-access',
-            'submenu'    => [
                 [
-                    'text' => 'ver Bitacora',
-                    'icon'       => 'fas fa-list',
-                    'route'  => 'bitacora.index',
+                    'text'       => 'Crear Tipo de pago',
+                    'icon'       => 'fas fa-credit-card',
+                    'route'  => 'tipo_pago.index',
                     'can'   =>  'admin-access',
                 ],
-
-
             ]
         ],
+
 
 
 

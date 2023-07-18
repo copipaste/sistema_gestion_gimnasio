@@ -33,7 +33,7 @@ class VentaController extends Controller
             'fecha',
             'total',
             'id_administrador',
-            ['label' => 'Actions', 'no-export' => true],
+            ['label' => 'Acciones', 'no-export' => true],
         ];
 
         return view('venta.index', compact('heads', 'ventas', 'users', 'detalle_ventas', 'productos'));

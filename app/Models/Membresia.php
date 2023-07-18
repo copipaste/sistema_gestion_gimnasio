@@ -26,6 +26,8 @@ class Membresia extends Model
     {
         return $this->belongsToMany(Disciplina::class, 'englobas', 'id_membresia', 'id_disciplina');
     }
+
+    
     //este es el cambio que hice
 
     public function getActivitylogOptions(): LogOptions

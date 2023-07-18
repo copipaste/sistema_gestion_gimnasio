@@ -37,7 +37,6 @@ class PeriodoController extends Controller
    //  $fecha_fin = $fecha_ini->addDays($membresia->duracion);
     
 
-
     $cliente->update([
          'id_membresia' => $request->tipo_membresia,
     ]);
@@ -46,7 +45,6 @@ class PeriodoController extends Controller
          $monto = $membresia->precio;
          $fecha_fin = $fecha_ini->addDays($membresia->duracion);
     } else {
-            
         $monto = $this->actualizarMonto($request->id_promocion, $request->tipo_membresia);
         $fecha_fin = $this->actualizarFecha($request->id_promocion, $membresia, $fecha_ini);
     }

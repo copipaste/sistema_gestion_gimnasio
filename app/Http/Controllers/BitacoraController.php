@@ -23,7 +23,7 @@ class BitacoraController extends Controller
             'administrador',
             'fecha',
             'Cambio realizado',
-            ['label' => 'Actions', 'no-export' => true],
+            ['label' => 'Acciones', 'no-export' => true],
         ];
         return view('bitacora.index', compact('heads', 'activities', 'users'));
     }

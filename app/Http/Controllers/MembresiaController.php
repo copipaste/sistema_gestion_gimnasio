@@ -26,7 +26,7 @@ class MembresiaController extends Controller
             'duracion',
             'precio',
             'descripcion',
-            ['label' => 'Actions', 'no-export' => true],
+            ['label' => 'Acciones', 'no-export' => true],
             // ['label' => 'Actions', 'no-export' => true],
 
 

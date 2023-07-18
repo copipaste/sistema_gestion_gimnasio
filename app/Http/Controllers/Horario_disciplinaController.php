@@ -24,7 +24,7 @@ class Horario_disciplinaController   extends Controller
             'hora de inicio',
             'hora de fin',
             
-            ['label' => 'Actions', 'no-export' => true],
+            ['label' => 'Acciones', 'no-export' => true],
             // ['label' => 'Actions', 'no-export' => true],
 
 
