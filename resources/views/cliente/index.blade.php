@@ -10,27 +10,54 @@
 
 
 @section('plugins.DateRangePicker', true)
-<form method="POST" action="{{ route('mostrar.mostrarEntreValores') }}">
-    @method('GET')
-    @csrf
-    <div class="form-group align-items-end">
-        <div class="input-group">
-            <div class="mr-2">
-                <x-adminlte-input name="start" label="Fecha inicio" type="date" placeholder="Fecha de inicio" label-class="text-lightblue">
-                </x-adminlte-input>
-            </div>
-            <div class="mr-2">
-                <x-adminlte-input name="end" label="Fecha fin" type="date" placeholder="Fecha de fin" label-class="text-lightblue">
-                </x-adminlte-input>
-            </div>
-            <div  style="margin-top: 32px;">
+<div class="d-flex">
+
+    <form method="POST" action="{{ route('mostrar.mostrarEntreValores') }}">
+        @method('GET')
+        @csrf
+        <div class="form-group align-items-end">
+            <div class="input-group">
+                <div class="mr-2">
+                    <x-adminlte-input name="start" label="Fecha inicio" type="date" placeholder="Fecha de inicio" label-class="text-lightblue">
+                    </x-adminlte-input>
+                </div>
+                <div class="mr-2">
+                    <x-adminlte-input name="end" label="Fecha fin" type="date" placeholder="Fecha de fin" label-class="text-lightblue">
+                    </x-adminlte-input>
+                </div>
+                <div  style="margin-top: 32px;">
+                    
+                    <x-adminlte-button class="btn-flat" type="submit" label="Filtrar" theme="dark" icon="fas fa-lg fa-search"/>
+                </div>
                 
-                <x-adminlte-button class="btn-flat" type="submit" label="Filtrar" theme="dark" icon="fas fa-lg fa-search"/>
             </div>
-            
         </div>
-    </div>
-</form>
+    </form>
+    
+    
+    <form method="POST" action="{{ route('mostrar.filtroDisciplina') }}">
+        @method('GET')
+        @csrf
+        {{-- <div class="form-group align-items-end"> --}}
+            <div class="input-group ml-4">
+    
+            
+                <x-adminlte-select name="tipo_membre" label="Filtrar por membresia" label-class="text-lightblue" >
+                    <option value="">Seleccione una membresia</option>
+                    @foreach ($membresias as $membresia)
+                        <option value="{{ $membresia->id }}"> {{ $membresia->nombre }}</option>
+                    @endforeach
+                </x-adminlte-select>
+                <div  style="margin-top: 32px; margin-left: 8px" >
+                    <x-adminlte-button class="btn-flat" type="submit" label="Filtrar" theme="dark"  icon="fas fa-lg fa-search" />
+                </div>
+                
+                
+            </div>
+        {{-- </div> --}}
+    </form>
+
+</div>
 
 
 {{-- insertado --}}

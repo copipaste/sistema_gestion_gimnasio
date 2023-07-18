@@ -25,6 +25,9 @@ class ClienteController extends Controller
             $query->where('name', 'cliente');
         })->get();
 
+
+
+
         $periodos = Periodo::all();
         $membresias = Membresia::all();
         $tipo_pagos = Tipo_Pago::all();
@@ -264,4 +267,51 @@ class ClienteController extends Controller
         ];
         return view('cliente.index',compact('clientes','periodos','membresias','heads','tipo_pagos','promociones'));
     }
+
+
+
+
+
+
+
+
+
+
+    public function filtroDisciplina(Request $request)
+    {
+     
+        if($request->tipo_membre == null){
+            return redirect()->route('cliente.index');
+        }
+
+        $clientes = User::whereHas('membresia', function ($query) use ($request) {
+            $query->where('id', '=', $request->tipo_membre);
+       
+        })->get();
+
+        
+
+        $periodos = Periodo::all();
+        $membresias = Membresia::all();
+        $tipo_pagos = Tipo_Pago::all();
+        $promociones = Promocion::all();
+        
+
+        $heads = [
+            'numero de carnet',
+            'nombre',
+            'apellido',
+            'email',
+            'inicio de membresia',
+            'fin de membresia',
+            'estado',
+            'membresia',
+             ['label' => 'Acciones', 'no-export' => true],
+        ];
+        return view('cliente.index',compact('clientes','periodos','membresias','heads','tipo_pagos','promociones'));
+    }
+
+
+
+
 }

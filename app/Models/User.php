@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -68,7 +69,7 @@ class User extends Authenticatable
     //esto es el cambio que hice 
     public function membresia()
     {
-        return $this->belongsTo(Membresia::class, 'idMembresia');
+        return $this->belongsTo(Membresia::class, 'id_membresia');
     }
     
     //esto es el cambio que hice 
@@ -90,6 +91,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Disciplina::class, 'instructor_disciplinas', 'id_instructor', 'id_disciplina');
     }
+
+
+
+
+  
 
     
 }

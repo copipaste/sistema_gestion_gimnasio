@@ -87,6 +87,7 @@ Route::get('/perfil', [PerfilController::class, 'show'])->name('perfil.show')->m
 Route::get('/mostrar',[ClienteController::class, 'mostrarEntreValores'])->name('mostrar.mostrarEntreValores')->middleware('auth');
 Route::get('/mostrar2',[PagoController::class, 'mostrarEntreValores'])->name('mostrar.mostrarEntreValores')->middleware('auth');
 
+Route::get('/mostrar3',[ClienteController::class, 'filtroDisciplina'])->name('mostrar.filtroDisciplina')->middleware('auth');
 
 
 Route::get('/datos', [EmpleadoController::class,'datos'])->name('datos')->middleware('auth')->middleware('can:entrenador-access');
