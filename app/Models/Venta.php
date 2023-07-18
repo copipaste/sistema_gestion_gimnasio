@@ -12,7 +12,6 @@ class Venta extends Model
     use HasFactory,logsActivity;
 
     protected $fillable = [
-        'id',
         'fecha',
         'total',
         'id_administrador'];
