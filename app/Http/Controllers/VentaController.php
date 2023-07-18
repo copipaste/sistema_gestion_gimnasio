@@ -77,8 +77,8 @@ class VentaController extends Controller
 
         
 
-         DB::beginTransaction();
-         try {
+        //  DB::beginTransaction();
+        //  try {
 
             $Ventas = new Venta();
             $Ventas->fecha = Carbon::now();
@@ -96,17 +96,18 @@ class VentaController extends Controller
             $estimatesAdd['cantidad'] = $request->qty[$key];
             $estimatesAdd['precio'] = $request->unit_price[$key];
             Detalle_Venta::create($estimatesAdd);
-        
+            
+
             }
 
-             DB::commit();
+            //  DB::commit();
        //  Toastr::success('Create new Estimates successfully :)','Success');
              return redirect()->route('form/estimates/page');
-         } catch(\Exception $e) {
-             DB::rollback();
+        //  } catch(\Exception $e) {
+        //      DB::rollback();
         //   //  Toastr::error('Add Estimates fail :)','Error');
-             return redirect()->back();
-         }
+        //      return redirect()->back();
+        //  }
     }
 
 
