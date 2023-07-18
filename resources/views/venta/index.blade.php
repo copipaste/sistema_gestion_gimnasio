@@ -61,6 +61,7 @@ data-toggle="modal" data-target="#modalUpdateMembresia{{ $venta->id }}">
                         </tr>
                     </thead>
                     <tbody>
+                    
                         @foreach($detalle_ventas as $detalle_venta)
                         <tr>
                             @if($detalle_venta->id_venta == $venta->id)

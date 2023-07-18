@@ -74,19 +74,27 @@ class VentaController extends Controller
     public function createEstimateSaveRecord(Request $request)
     {
         /*esto es para guardar  */
+        $request->validate([
+            'producto' => 'required',
+            'qty' => 'required',
+            'unit_price' => 'required',
+            'total' => 'required',
+            'discount' => 'required',
+            'grand_total' => 'required',
 
-        
+        ]);
 
           DB::beginTransaction();
           try {
 
             // $Ventas = new Venta();
 
-            $Ventas = Venta::create([
+            $Vent = Venta::create([
                 'fecha' => Carbon::now(),
                 'total' => $request->grand_total,
                 'id_administrador' => Auth::user()->id,
             ]);
+         
             // $Ventas->fecha = Carbon::now();
             // $Ventas->total = $request->grand_total;
             // $Ventas->id_administrador  = Auth::user()->id;
@@ -97,7 +105,7 @@ class VentaController extends Controller
  
 
            foreach($request->producto as $key => $productos) {
-            $estimatesAdd['id_venta'] = $Ventas->id;
+            $estimatesAdd['id_venta'] = $Vent->id;
             $estimatesAdd['id_producto'] = $productos;
             $estimatesAdd['cantidad'] = $request->qty[$key];
             $estimatesAdd['precio'] = $request->unit_price[$key];
@@ -107,11 +115,11 @@ class VentaController extends Controller
             }
 
               DB::commit();
-       //  Toastr::success('Create new Estimates successfully :)','Success');
+      
              return redirect()->route('form/estimates/page');
           } catch(\Exception $e) {
               DB::rollback();
-        //   //  Toastr::error('Add Estimates fail :)','Error');
+
               return redirect()->back();
           }
     }

@@ -11,7 +11,10 @@ class Venta extends Model
 {
     use HasFactory,logsActivity;
 
+
+    protected $table = 'ventas';
     protected $fillable = [
+        'id',
         'fecha',
         'total',
         'id_administrador'];
