@@ -22,7 +22,7 @@ class Membresia extends Model
     ];
     
     //este es el cambio que hice
-        public function disciplinas()
+    public function disciplinas()
     {
         return $this->belongsToMany(Disciplina::class, 'englobas', 'id_membresia', 'id_disciplina');
     }

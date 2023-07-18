@@ -8,9 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Venta;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+
 use Carbon\Carbon;
-use Toastr;
 use Illuminate\Support\Facades\DB;
 
 
@@ -89,24 +88,31 @@ class VentaController extends Controller
 
             // $Ventas = new Venta();
 
-            $Vent = Venta::create([
-                'fecha' => Carbon::now(),
-                'total' => $request->grand_total,
-                'id_administrador' => Auth::user()->id,
-            ]);
+                $Vent = Venta::create([
+                    'fecha' => Carbon::now(),
+                    'total' => $request->grand_total,
+                    'id_administrador' => Auth::user()->id,
+                ]);
          
             // $Ventas->fecha = Carbon::now();
             // $Ventas->total = $request->grand_total;
             // $Ventas->id_administrador  = Auth::user()->id;
             // $Ventas->save();
-         
+        
             foreach($request->producto as $key => $productos) {
-                Detalle_Venta::create([
+                // detalle_Venta::create([
+                //     'id_venta' => $Vent->id,
+                //     'id_producto' => $productos,
+                //     'cantidad' => $request->qty[$key],
+                //     'precio' => $request->unit_price[$key],
+                // ]);
+                DB::table('detalle_ventas')->insert([
                     'id_venta' => $Vent->id,
                     'id_producto' => $productos,
                     'cantidad' => $request->qty[$key],
                     'precio' => $request->unit_price[$key],
-                ]);    
+                ]);
+                
             }
     
  
